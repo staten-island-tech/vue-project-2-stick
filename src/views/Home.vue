@@ -1,13 +1,22 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <PkmnPreviewCard
+      v-for="(pocketMonster, index) in pokemons"
+      :key="pocketMonster.name"
+      :index="index"
+      :pokemon="pocketMonster"
+    />
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import PkmnPreviewCard from "../components/PkmnPreviewCard.vue";
 export default {
   name: "Home",
-  components: {},
+  components: {
+    PkmnPreviewCard,
+  },
   data() {
     return {
       pokemons: [],
@@ -21,14 +30,14 @@ export default {
         );
         const data = await response.json();
         this.pokemons = data.results;
-        console.log(this.pokemons)
+        console.log(this.pokemons);
       } catch (error) {
         console.log("oops");
       }
     },
   },
   created: function () {
-    this.fetchData()
+    this.fetchData();
   },
 };
 </script>
