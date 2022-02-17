@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      PokemonData: {},
+      PokemonData: [],
     };
   },
   mounted: function () {
@@ -33,9 +33,4 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  width: 30rem;
-  background-color: black;
-  height: 20rem;
-}
 </style>
