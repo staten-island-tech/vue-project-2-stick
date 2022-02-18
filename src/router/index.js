@@ -18,10 +18,10 @@ const routes = [
     }
   },
   {
-    path: '/test',
-    name: 'Test',
+    path: '/Pokemon/:id',
+    name: 'Pokemon',
     component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/Test.vue')
+      return import(/* webpackChunkName: "about" */ '../views/Pokemon.vue')
     }
   },
 ]
