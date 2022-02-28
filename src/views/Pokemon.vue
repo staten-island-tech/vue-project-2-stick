@@ -3,9 +3,9 @@
     <h2 class="card-name">{{ PokemonData.name }}</h2>
     <ul class="card-image-list">
       <img class="card-image" :src="spriteFront" />
-      <img class="card-image" :src="spriteBack" />
+      <!-- <img class="card-image" :src="spriteBack" />
       <img class="card-image" :src="spriteShinyFront" />
-      <img class="card-image" :src="spriteShinyBack" />
+      <img class="card-image" :src="spriteShinyBack" /> -->
     </ul>
     <ul class="types"></ul>
   </div>
@@ -29,7 +29,7 @@ export default {
         );
         const data = await response.json();
         this.PokemonData = data;
-        console.log(this.PokemonData);
+
         return this.PokemonData;
       } catch (error) {
         console.log(error);

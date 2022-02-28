@@ -1,5 +1,8 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
-</template>
+<Suspense>
+      <template #default>
+        <article-info/>
+      </template>
+      <template #fallback>
+        <div>Loading Profile...</div>
+      </template>
+</Suspense>
