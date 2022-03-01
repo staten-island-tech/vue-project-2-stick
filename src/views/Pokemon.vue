@@ -10,6 +10,7 @@
     <ul class="types"></ul>
   </div>
 </template>
+  
 
 <script>
 export default {
@@ -21,7 +22,18 @@ export default {
   mounted: function () {
     this.fetchData();
   },
-  methods: {
+  async setup() {
+    const product = await fetch(
+      "https://pokeapi.co/api/v2/pokemon/" + this.$route.params.id,
+      {
+        method: "get",
+      }
+    ).then((r) => r.json());
+    this.PokemonData = product;
+    console.log(this.PokemonData);
+    return { product };
+  },
+  /* methods: {
     fetchData: async function () {
       try {
         const response = await fetch(
@@ -35,7 +47,7 @@ export default {
         console.log(error);
       }
     },
-  },
+  }, */
   computed: {
     spriteFront: function () {
       return `${this.PokemonData.sprites.front_default}`;

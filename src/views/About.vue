@@ -1,8 +1,7 @@
-<Suspense>
-      <template #default>
-        <article-info/>
-      </template>
-      <template #fallback>
-        <div>Loading Profile...</div>
-      </template>
-</Suspense>
+<template></template>
+
+<script setup>
+</script>
+
+<style lang="scss" scoped>
+</style>
