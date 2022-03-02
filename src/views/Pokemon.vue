@@ -4,8 +4,8 @@
     <ul class="card-image-list">
       <img class="card-image" :src="spriteFront" />
       <!-- <img class="card-image" :src="spriteBack" />
-      <img class="card-image" :src="spriteShinyFront" />
-      <img class="card-image" :src="spriteShinyBack" /> -->
+        <img class="card-image" :src="spriteShinyFront" />
+        img class="card-image" :src="spriteShinyBack" /> -->
     </ul>
     <ul class="types"></ul>
   </div>
@@ -13,6 +13,8 @@
   
 
 <script>
+import { ref } from "vue";
+
 export default {
   data() {
     return {
@@ -22,32 +24,21 @@ export default {
   mounted: function () {
     this.fetchData();
   },
-  async setup() {
-    const product = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/" + this.$route.params.id,
-      {
-        method: "get",
-      }
-    ).then((r) => r.json());
-    this.PokemonData = product;
-    console.log(this.PokemonData);
-    return { product };
-  },
-  /* methods: {
+  methods: {
     fetchData: async function () {
       try {
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`
         );
         const data = await response.json();
-        this.PokemonData = data;
+        this.PokemonData = ref(data);
 
         return this.PokemonData;
       } catch (error) {
         console.log(error);
       }
     },
-  }, */
+  },
   computed: {
     spriteFront: function () {
       return `${this.PokemonData.sprites.front_default}`;
