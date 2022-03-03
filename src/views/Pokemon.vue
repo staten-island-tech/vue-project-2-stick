@@ -1,11 +1,11 @@
 <template>
-  <div class="poke-card">
+  <div class="poke-card" v-if="PokemonData">
     <h2 class="card-name">{{ PokemonData.name }}</h2>
     <ul class="card-image-list">
-      <img class="card-image" :src="spriteFront" />
+      <img class="card-image" :src="asdf" />
       <!-- <img class="card-image" :src="spriteBack" />
-        <img class="card-image" :src="spriteShinyFront" />
-        img class="card-image" :src="spriteShinyBack" /> -->
+      <img class="card-image" :src="spriteShinyFront" />
+      <img class="card-image" :src="spriteShinyBack" /> -->
     </ul>
     <ul class="types"></ul>
   </div>
@@ -13,8 +13,6 @@
   
 
 <script>
-import { ref } from "vue";
-
 export default {
   data() {
     return {
@@ -22,7 +20,11 @@ export default {
     };
   },
   mounted: function () {
-    this.fetchData();
+    /* fetch(`https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`)
+      .then((res) => res.json())
+      .then((data) => (this.PokemonData = data))
+      .catch((err) => console.log(err.message)); */
+    this.fetchData().then((this.load = true));
   },
   methods: {
     fetchData: async function () {
@@ -31,15 +33,15 @@ export default {
           `https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`
         );
         const data = await response.json();
-        this.PokemonData = ref(data);
-
+        this.PokemonData = data;
+        console.log(this.PokemonData);
         return this.PokemonData;
       } catch (error) {
         console.log(error);
       }
     },
   },
-  computed: {
+  /* computed: {
     spriteFront: function () {
       return `${this.PokemonData.sprites.front_default}`;
     },
@@ -52,7 +54,7 @@ export default {
     spriteShinyBack: function () {
       return `${this.PokemonData.sprites.back_shiny}`;
     },
-  },
+  }, */
 };
 </script>
 
