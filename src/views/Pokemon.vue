@@ -1,32 +1,48 @@
 <template>
-  <div class="poke-card" v-if="PokemonData">
-    <h2 class="card-name">{{ PokemonData.name }}</h2>
-    <ul class="card-image-list">
-      <img class="card-image" :src="asdf" />
-      <!-- <img class="card-image" :src="spriteBack" />
+  <Suspense>
+    <template #default>
+      <div class="poke-card" v-if="PokemonData">
+        <h2 class="card-name">{{ PokemonData.name }}</h2>
+        <ul class="card-image-list">
+          <img class="card-image" :src="spriteFront" />
+          <!-- <img class="card-image" :src="spriteBack" />
       <img class="card-image" :src="spriteShinyFront" />
       <img class="card-image" :src="spriteShinyBack" /> -->
-    </ul>
-    <ul class="types"></ul>
-  </div>
+        </ul>
+        <ul class="types"></ul></div
+    ></template>
+    <template #fallback>
+      <div><h1>Loading...</h1></div>
+    </template>
+  </Suspense>
 </template>
   
 
 <script>
+import { Suspense } from "vue";
 export default {
+  components: {
+    Suspense,
+  },
+
   data() {
     return {
       PokemonData: {},
     };
   },
-  mounted: function () {
+  mounted() {
     /* fetch(`https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`)
       .then((res) => res.json())
       .then((data) => (this.PokemonData = data))
       .catch((err) => console.log(err.message)); */
-    this.fetchData().then((this.load = true));
   },
-  methods: {
+  async setup() {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`)
+      .then((res) => res.json())
+      .then((data) => (this.PokemonData = data))
+      .catch((err) => console.log(err.message));
+  },
+  /* methods: {
     fetchData: async function () {
       try {
         const response = await fetch(
@@ -40,8 +56,8 @@ export default {
         console.log(error);
       }
     },
-  },
-  /* computed: {
+  }, */
+  computed: {
     spriteFront: function () {
       return `${this.PokemonData.sprites.front_default}`;
     },
@@ -54,7 +70,7 @@ export default {
     spriteShinyBack: function () {
       return `${this.PokemonData.sprites.back_shiny}`;
     },
-  }, */
+  },
 };
 </script>
 
