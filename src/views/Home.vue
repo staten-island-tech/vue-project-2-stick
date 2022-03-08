@@ -22,6 +22,9 @@ export default {
       pokemons: [],
     };
   },
+  mounted() {
+    this.fetchData();
+  },
   methods: {
     fetchData: async function () {
       try {
