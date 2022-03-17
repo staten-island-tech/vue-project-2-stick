@@ -1,16 +1,19 @@
 <template>
   <nav>
-    <div>
-      <router-link to="/"> Home </router-link>
+    <div class="redirect">
+      <router-link class="linked-route" to="/"> Home </router-link>
     </div>
 
-    <div>
-      <button>Logout</button>
+    <div class="redirect">
+      <router-link class="linked-route" to=""> Login </router-link>
     </div>
 
-    <div>
-      <router-link to=""></router-link>
-      <router-link to=""></router-link>
+    <div class="redirect">
+      <router-link class="linked-route" to=""> Signup </router-link>
+    </div>
+
+    <div class="redirect">
+      <button class="logout">Logout</button>
     </div>
   </nav>
 </template>
@@ -23,5 +26,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 </style>

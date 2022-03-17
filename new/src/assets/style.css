@@ -89,40 +89,38 @@ h4,
 h5 {
   text-align: center;
 }
-.linked-route {
+
+button {
   font-size: 3rem;
 }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-  width: 15%;
-  margin: 1rem auto;
+.container {
+  width: 60%;
+  margin-left: auto;
+  background-color: green;
+  border-bottom-left-radius: 2rem;
+}
+nav {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
 }
-
-#nav a {
+nav a {
+  color: #444;
+  text-decoration: none;
   font-weight: bold;
-  color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.logout {
+  margin: 0 auto;
 }
-.home {
+.linked-route {
+  font-size: 3rem;
+  margin: 0 auto;
+}
+.redirect {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 90vw;
-  margin: 1rem auto;
-}
-.pkmn-container {
-  margin: 2rem auto;
+  align-items: center;
+  background-color: white;
+  border-radius: 2rem;
+  width: 24%;
 }
