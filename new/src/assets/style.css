@@ -45,82 +45,72 @@ body {
   --smallText: 0.8rem;
 
   /* Elevation */
-  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --level-1-white: 0 1px 3px 0 rgba(255, 255, 255, 0.1),
-    0 1px 2px 0 rgba(255, 255, 255, 0.06);
-  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --level-2-white: 0 4px 6px -1px rgba(255, 255, 255, 0.06),
-    0 2px 4px -1px rgba(255, 255, 255, 0.1);
-  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
-  /* Positioning */
-  --containerPadding: 2.5%;
-  --headerHeight: 3rem;
-  --borderRadius: 10px;
 }
 h1 {
-  margin-top: 0;
-  font-size: var(--h1);
+  font-size: var(--h3);
 }
-
-h2 {
-  font-size: var(--h2);
-}
-
 h3 {
   font-size: var(--h3);
 }
-
-h4 {
-  font-size: var(--h4);
-}
-
-h5 {
-  font-size: var(--h5);
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-  text-align: center;
-}
-
-button {
-  font-size: 3rem;
-}
-
 .container {
-  width: 60%;
-  margin-left: auto;
-  background-color: green;
-  border-bottom-left-radius: 2rem;
+  max-width: 60%;
+  margin: 0 auto;
 }
+
 nav {
   display: flex;
   align-items: center;
 }
-nav a {
-  color: #444;
-  text-decoration: none;
-  font-weight: bold;
+
+nav h1 {
+  margin-right: auto;
 }
 
-.logout {
-  margin: 0 auto;
+nav a,
+nav button,
+nav span {
+  margin-left: 2rem;
 }
-.linked-route {
-  font-size: 3rem;
-  margin: 0 auto;
+
+nav a {
+  color: #131313;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
 }
-.redirect {
-  display: flex;
-  align-items: center;
-  background-color: white;
+
+nav span {
+  color: gray;
+}
+
+button {
+  background: #00dba4;
+  border: 0;
+  padding: 0.6rem 1rem;
   border-radius: 2rem;
-  width: 24%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.login {
+  border: solid;
+  border-color: black;
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  margin-top: 10rem;
+  width: 60%;
+  padding: 13rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  font-size: 5rem;
+}
+
+input {
+  font-size: 3rem;
 }
