@@ -1,5 +1,5 @@
 <template>
-  <form class="login" @submit.prevent="">
+  <form class="login" @submit.prevent="handleSubmit">
     <h3>Signup</h3>
 
     <label for="email">Email:</label>
@@ -15,14 +15,29 @@
 <script>
 import { ref } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   setup() {
     const email = ref("");
     const password = ref("");
+    const error = ref(null);
 
     const store = useStore();
+    const router = useRouter();
 
-    return { email, password, store };
+    const handleSubmit = async () => {
+      try {
+        await store.dispatch("signup", {
+          email: email.value,
+          password: password.value,
+        });
+        router.push("/");
+      } catch (err) {
+        error.value = err.message;
+      }
+    };
+
+    return { email, password, store, handleSubmit };
   },
 };
 </script>
