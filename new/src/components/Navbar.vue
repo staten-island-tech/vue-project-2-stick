@@ -6,10 +6,10 @@
       <router-link class="linked-route" to="/"> Home </router-link>
     </div>
     <div>
-      <p>Logged in as {{ displayName }}</p>
+      <p>Logged in as {{ per }}</p>
     </div>
     <div class="redirect">
-      <button class="logout">Logout</button>
+      <button class="logout" @click="handleClick">Logout</button>
     </div>
     <div class="redirect">
       <router-link class="linked-route" to="/login"> Login </router-link
@@ -20,27 +20,24 @@
 
 <script>
 import { useStore } from "vuex";
-import { computed } from "vue";
-import { getAuth } from "firebase/auth";
+import { computed /* ref */ } from "vue";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
   setup() {
     const auth = getAuth();
-    const user = auth.currentUser;
-    if (user !== null) {
-      const displayName = user.displayName;
-      const email = user.email;
-      const photoURL = user.photoURL;
-      const emailVerified = user.emailVerified;
-      const uid = user.uid;
-    }
-    const store = useStore();
+    const per = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        return user.email;
+      }
+    });
 
+    const store = useStore();
     const handleClick = () => {
       store.dispatch("logout");
     };
     return {
       handleClick,
-      displayName,
+      per,
       user: computed(() => store.state.user),
       authIsReady: computed(() => store.state.authIsReady),
     };
