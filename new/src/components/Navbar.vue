@@ -6,7 +6,7 @@
       <router-link class="linked-route" to="/"> Home </router-link>
     </div>
     <div>
-      <p>Logged in as {{ per }}</p>
+      <p>Logged in as {{ name }}</p>
     </div>
     <div class="redirect">
       <button class="logout" @click="handleClick">Logout</button>
@@ -20,14 +20,18 @@
 
 <script>
 import { useStore } from "vuex";
-import { computed /* ref */ } from "vue";
+import { computed, ref } from "vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
   setup() {
     const auth = getAuth();
-    const per = onAuthStateChanged(auth, (user) => {
+    let name = ref("");
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        return user.email;
+        const detail = user.email;
+        name = detail;
+      } else {
+        return "";
       }
     });
 
@@ -37,7 +41,7 @@ export default {
     };
     return {
       handleClick,
-      per,
+      name,
       user: computed(() => store.state.user),
       authIsReady: computed(() => store.state.authIsReady),
     };
