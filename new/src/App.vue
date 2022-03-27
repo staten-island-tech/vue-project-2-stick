@@ -1,8 +1,12 @@
 <template>
-  <div class="container">
-    <Navbar />
-    <router-view />
-  </div>
+  <body>
+    <div class="container">
+      <Navbar />
+    </div>
+    <div>
+      <router-view />
+    </div>
+  </body>
 </template>
 
 <script>
@@ -14,5 +18,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
