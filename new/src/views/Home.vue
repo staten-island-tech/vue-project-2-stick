@@ -1,8 +1,8 @@
 <template>
-  <div class="space">
-    <button>
-      <h2>+</h2>
-    </button>
+  <div>
+    <router-link class="add" to="/create">
+      <h2 class="sign">+</h2>
+    </router-link>
   </div>
 </template>
 
@@ -15,20 +15,19 @@ export default {
 </script>
 
 <style scoped>
-.space {
-  margin-top: 6%;
-  width: 95%;
-  height: auto;
+div {
+  width: 98vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
 }
-button {
-  width: 23%;
-  height: 50%;
+a {
+  width: 15%;
+  height: 30%;
+  font-size: 5rem;
   background-color: gray;
 }
-h2 {
-  color: white;
-  font-size: 200%;
-  padding: 30%;
+.sign {
   margin: 0 auto;
 }
 </style>
