@@ -9,21 +9,10 @@
 <script>
 import { useStore } from "vuex";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 export default {
   setup() {
-    const firebase = firebase;
-    const auth = getAuth();
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log("hello");
-      } else {
-        console.log("no one here");
-      }
-    });
     const store = useStore();
-    return { store, firebase };
+    return { store };
   },
 };
 </script>
