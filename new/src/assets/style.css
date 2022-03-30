@@ -110,11 +110,14 @@ label {
   display: block;
   margin-bottom: 1rem;
   margin-top: 2rem;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 input {
-  font-size: 3rem;
+  font-size: 2rem;
+  width: 80%;
+  border-radius: 2rem;
+  padding: 1%;
 }
 
 p {

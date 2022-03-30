@@ -1,42 +1,48 @@
 <template>
   <div class="new-recipe">
-    <div class="title">
-      <label for="title">Title</label>
-      <input type="text" name="title" />
-    </div>
-
-    <!-- <div class="steps">
-      <div>
-        <label for="step1">Step 1</label>
-        <input type="text" name="step1" />
+    <div class="side1">
+      <div class="title">
+        <div class="title2">
+          <label for="title">Title</label> <input type="text" name="title" />
+        </div>
+      </div>
+      <div class="step-container">
+        <div
+          class="steps"
+          v-for="step in steps"
+          :key="step"
+          v-html="step"
+        ></div>
       </div>
 
-      <div>
-        <label for="step3">Step 3</label>
-        <input type="text" name="step3" />
-      </div>
-      <div>
-        <button>Add Step</button>
-      </div>
-    </div> -->
-    <div class="steps" v-for="step in steps" :key="step">
-      <div v-html="step"></div>
+      <button @click="add" class="create">add step</button>
     </div>
-    <button @click="add">add step</button>
+
+    <div class="side2">
+      <div class="ingredients">
+        <div class="ingredients2">
+          <label for="ingredients">Ingredients List</label>
+          <input class="ingre" type="text" name="ingredients " />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   setup() {
-    const steps = [
-      '<div class="new"><label for="step1">Step 1</label><input type="text" name="step1" /></div>',
-      '<div class"new"><label for="step2">Step 2</label><input type="text" name="step2" /></div>',
-      '<div class"new"><label for="step3">Step 3</label><input type="text" name="step3" /></div>',
-    ];
+    let numb = 3;
+    const steps = ref([
+      '<label for="step1">Step 1</label><input type="text" name="step1" />',
+      '<label for="step2">Step 2</label><input type="text" name="step2" />',
+      '<label for="step3">Step 3</label><input type="text" name="step3" />',
+    ]).value;
     function add() {
+      numb++;
       const create = [
-        '<div><label for="step3">Step 3</label><input type="text" name="step3" /></div>',
+        `<label for="Step${numb}">Step ${numb}</label><input type="text" name="step${numb}" />`,
       ];
       console.log(steps);
       steps.push(create);
@@ -48,27 +54,51 @@ export default {
 
 <style scoped>
 .new-recipe {
+  display: flex;
+  flex-flow: row nowrap;
   max-width: 90%;
   margin: 0 auto;
   margin-top: 2%;
   background-color: pink;
   border-radius: 2rem;
   padding: 2%;
+  block-size: fit-content;
+}
+.side1 {
+  width: 50%;
 }
 .title {
   width: 50%;
-  height: 30%;
+  height: 22%;
+  border: solid;
 }
-input {
-  width: 100%;
-  border-radius: 2rem;
-  padding: 1%;
+.title2 {
+  padding: 2%;
 }
 
+.step-container {
+  margin-top: 2%;
+  border: solid;
+}
 .steps {
   max-width: 60%;
+  padding: 1%;
 }
 .new {
   width: 80%;
+}
+.create {
+  margin-top: 1%;
+}
+
+.side2 {
+  width: 50%;
+}
+.ingredients {
+  margin-left: 3%;
+  border: solid;
+}
+.ingredients2 {
+  padding: 2%;
 }
 </style>
