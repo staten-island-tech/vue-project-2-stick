@@ -3,19 +3,29 @@
     <div class="side1">
       <div class="title">
         <div class="title2">
-          <label for="title">Title</label> <input type="text" name="title" />
+          <label for="title">Title</label>
+          <textarea name="title" id="title" cols="50" rows="1">
+            <!-- <input type="text" name="title"  /> -->
+            hello
+          </textarea>
         </div>
       </div>
-      <div class="step-container">
-        <div
-          class="steps"
-          v-for="step in steps"
-          :key="step"
-          v-html="step"
-        ></div>
-      </div>
+      <form @submit.prevent="">
+        <div>
+          <div class="step-container">
+            <div
+              class="steps"
+              v-for="step in steps"
+              :key="step"
+              v-html="step"
+            ></div>
+          </div>
 
-      <button @click="add" class="create">add step</button>
+          <button @click="add" class="create" @submit.prevent="handleSubmit">
+            add step
+          </button>
+        </div>
+      </form>
     </div>
 
     <div class="side2">
@@ -47,7 +57,10 @@ export default {
       console.log(steps);
       steps.push(create);
     }
-    return { add, steps };
+    const handleSubmit = () => {
+      console.log("submit");
+    };
+    return { add, steps, handleSubmit };
   },
 };
 </script>
@@ -68,8 +81,8 @@ export default {
   width: 50%;
 }
 .title {
-  width: 50%;
-  height: 22%;
+  width: 80%;
+  height: 15rem;
   border: solid;
 }
 .title2 {
@@ -100,5 +113,9 @@ export default {
 }
 .ingredients2 {
   padding: 2%;
+}
+
+textarea {
+  font-size: 2rem;
 }
 </style>
