@@ -4,65 +4,31 @@
       <div class="title">
         <div class="title2">
           <label for="title">Title</label>
-          <textarea name="title" id="title" cols="50" rows="1">
-            <!-- <input type="text" name="title"  /> -->
-            hello
-          </textarea>
+          <textarea name="title" id="title" cols="50" rows="1.5"> </textarea>
         </div>
       </div>
-      <form @submit.prevent="">
-        <div>
-          <div class="step-container">
-            <div
-              class="steps"
-              v-for="step in steps"
-              :key="step"
-              v-html="step"
-            ></div>
-          </div>
-
-          <button @click="add" class="create" @submit.prevent="handleSubmit">
-            add step
-          </button>
+      <form>
+        <div class="steps box">
+          <label for="steps">Instructions</label>
+          <textarea name="steps" id="steps" cols="65" rows="30"></textarea>
         </div>
+        <button class="submit">Complete</button>
       </form>
     </div>
 
     <div class="side2">
-      <div class="ingredients">
-        <div class="ingredients2">
-          <label for="ingredients">Ingredients List</label>
-          <input class="ingre" type="text" name="ingredients " />
-        </div>
+      <div class="ingredients box"></div>
+      <div class="img">
+        <dropbox />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import { ref } from "vue";
-export default {
-  setup() {
-    let numb = 3;
-    const steps = ref([
-      '<label for="step1">Step 1</label><input type="text" name="step1" />',
-      '<label for="step2">Step 2</label><input type="text" name="step2" />',
-      '<label for="step3">Step 3</label><input type="text" name="step3" />',
-    ]).value;
-    function add() {
-      numb++;
-      const create = [
-        `<label for="Step${numb}">Step ${numb}</label><input type="text" name="step${numb}" />`,
-      ];
-      console.log(steps);
-      steps.push(create);
-    }
-    const handleSubmit = () => {
-      console.log("submit");
-    };
-    return { add, steps, handleSubmit };
-  },
-};
+
+<script setup>
+import dropbox from
+
 </script>
 
 <style scoped>
@@ -89,19 +55,11 @@ export default {
   padding: 2%;
 }
 
-.step-container {
-  margin-top: 2%;
-  border: solid;
-}
 .steps {
-  max-width: 60%;
+  max-width: 100%;
   padding: 1%;
-}
-.new {
-  width: 80%;
-}
-.create {
-  margin-top: 1%;
+  border: solid;
+  margin-top: 2%;
 }
 
 .side2 {
@@ -115,7 +73,12 @@ export default {
   padding: 2%;
 }
 
+.submit {
+  margin-top: 2%;
+}
 textarea {
+  display: block;
+  margin: 0 auto;
   font-size: 2rem;
 }
 </style>
