@@ -25,23 +25,20 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
   setup() {
     const auth = getAuth();
-    let name = ref("");
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const detail = user.email;
-        name = detail;
-      } else {
-        return "";
-      }
-    });
-
+    const user = auth.currentUser;
+    if (user !== null) {
+      const displayName = user.displayName;
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+      const uid = user.uid;
+    }
     const store = useStore();
     const handleClick = () => {
       store.dispatch("logout");
     };
     return {
       handleClick,
-      name,
       user: computed(() => store.state.user),
       authIsReady: computed(() => store.state.authIsReady),
     };

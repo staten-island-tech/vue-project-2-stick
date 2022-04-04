@@ -17,19 +17,34 @@
     </div>
 
     <div class="side2">
-      <div class="ingredients box"></div>
+      <div class="ingredients">
+        <label for="ingredients">Ingredients</label>
+        <textarea
+          name="ingredients"
+          id="ingredi"
+          cols="60"
+          rows="30"
+        ></textarea>
+      </div>
       <div class="img">
-        <dropbox />
+        <label for="img-file-name">Paste Img link Here</label>
+        <textarea name="img-file-name" id="img" cols="60" rows="10"></textarea>
       </div>
     </div>
   </div>
 </template>
 
 
-<script setup>
-import dropbox from
 
+
+<script>
+export default {
+  setup() {
+    return {};
+  },
+};
 </script>
+
 
 <style scoped>
 .new-recipe {
@@ -80,5 +95,11 @@ textarea {
   display: block;
   margin: 0 auto;
   font-size: 2rem;
+}
+
+.img {
+  margin-top: 2%;
+  margin-left: 3%;
+  border: solid;
 }
 </style>
