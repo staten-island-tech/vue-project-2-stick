@@ -5,8 +5,8 @@
     <div class="redirect">
       <router-link class="linked-route" to="/"> Home </router-link>
     </div>
-    <div>
-      <p>Logged in as {{ name }}</p>
+    <div v>
+      <p v-if="user !== null">Hello {{ user.email }}</p>
     </div>
     <div class="redirect">
       <button class="logout" @click="handleClick">Logout</button>
@@ -20,19 +20,10 @@
 
 <script>
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { computed /* ref */ } from "vue";
+
 export default {
   setup() {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user !== null) {
-      const displayName = user.displayName;
-      const email = user.email;
-      const photoURL = user.photoURL;
-      const emailVerified = user.emailVerified;
-      const uid = user.uid;
-    }
     const store = useStore();
     const handleClick = () => {
       store.dispatch("logout");
