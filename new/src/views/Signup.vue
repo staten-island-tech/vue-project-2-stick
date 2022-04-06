@@ -16,6 +16,7 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { getDatabase, set } from "firebase/database";
 export default {
   setup() {
     const email = ref("");
@@ -31,11 +32,22 @@ export default {
           email: email.value,
           password: password.value,
         });
+        writeUserData();
         router.push("/");
       } catch (err) {
         error.value = err.message;
       }
     };
+
+    function writeUserData(userId, name, email, imageUrl) {
+      const db = getDatabase();
+      set(ref(db, "users/" + userId), {
+        username: name,
+        email: email,
+        profile_picture: imageUrl,
+      });
+      console.log(db);
+    }
 
     return { email, password, store, handleSubmit };
   },
