@@ -1,38 +1,29 @@
 <template>
-  <div class="new-recipe">
-    <div class="side1">
-      <div class="title">
-        <div class="title2">
-          <label for="title">Title</label>
-          <textarea name="title" id="title" cols="50" rows="1.5"> </textarea>
-        </div>
-      </div>
-      <form>
-        <div class="steps box">
-          <label for="steps">Instructions</label>
-          <textarea name="steps" id="steps" cols="65" rows="30"></textarea>
-        </div>
-        <button class="submit">Complete</button>
-      </form>
-    </div>
-
-    <div class="side2">
-      <div class="ingredients">
-        <label for="ingredients">Ingredients</label>
-        <textarea
-          name="ingredients"
-          id="ingredi"
-          cols="60"
-          rows="30"
-        ></textarea>
-      </div>
-      <div class="img">
-        <label for="img-file-name">Paste Img link Here</label>
-        <textarea name="img-file-name" id="img" cols="60" rows="10"></textarea>
-      </div>
-    </div>
+  <div class="newRecipe">
+    <form>
+      <label for="title">Recipe Name</label>
+      <input type="text" v-model="recipe.title" />
+      <label for="Instruction">Recipe Instructions</label>
+      <textarea
+        v-model="recipe.instruc"
+        name="Instructions"
+        id="written"
+        cols="6955"
+        rows="20"
+      ></textarea>
+      <label for="Ingredient">List of Ingredients</label>
+      <textarea
+        v-model="recipe.ingred"
+        name="Ingredients"
+        id="written"
+        cols="6955"
+        rows="20"
+      ></textarea>
+      <button class="btn" @submit.prevent="post()">Complele</button>
+    </form>
   </div>
 </template>
+
 
 
 
@@ -40,66 +31,35 @@
 <script>
 export default {
   setup() {
-    return {};
+    const recipe = {
+      title: "",
+      ingred: "",
+      instruc: "",
+    };
+
+    return { recipe };
   },
 };
 </script>
 
 
 <style scoped>
-.new-recipe {
-  display: flex;
-  flex-flow: row nowrap;
-  max-width: 90%;
-  margin: 0 auto;
-  margin-top: 2%;
+.newRecipe {
   background-color: pink;
-  border-radius: 2rem;
-  padding: 2%;
-  block-size: fit-content;
-}
-.side1 {
-  width: 50%;
-}
-.title {
-  width: 80%;
-  height: 15rem;
-  border: solid;
-}
-.title2 {
-  padding: 2%;
-}
-
-.steps {
-  max-width: 100%;
-  padding: 1%;
-  border: solid;
-  margin-top: 2%;
-}
-
-.side2 {
-  width: 50%;
-}
-.ingredients {
-  margin-left: 3%;
-  border: solid;
-}
-.ingredients2 {
-  padding: 2%;
-}
-
-.submit {
-  margin-top: 2%;
-}
-textarea {
-  display: block;
+  width: 60%;
   margin: 0 auto;
+  padding: 2%;
+  border-radius: 2rem;
+}
+
+textarea {
+  box-sizing: border-box;
+  width: 100%;
   font-size: 2rem;
 }
 
-.img {
-  margin-top: 2%;
-  margin-left: 3%;
-  border: solid;
+.btn {
+  margin-top: 1%;
+  margin-left: 90%;
 }
 </style>
