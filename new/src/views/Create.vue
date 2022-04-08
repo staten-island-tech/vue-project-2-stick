@@ -19,7 +19,7 @@
         cols="6955"
         rows="20"
       ></textarea>
-      <button class="btn" @submit.prevent="post()">Complele</button>
+      <button class="btn" @submit.prevent="">Complele</button>
     </form>
   </div>
 </template>
@@ -31,13 +31,7 @@
 <script>
 export default {
   setup() {
-    const recipe = {
-      title: "",
-      ingred: "",
-      instruc: "",
-    };
-
-    return { recipe };
+    return {};
   },
 };
 </script>
