@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import Create from "../views/Create.vue";
+import Blog from "../views/blog.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/create",
     name: "Create",
     component: Create,
+  },
+  {
+    path: "/blog",
+    name: "Blog",
+    component: Blog,
   },
 ];
 

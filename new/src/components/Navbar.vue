@@ -3,7 +3,7 @@
     <h1 class="title">Recipe list</h1>
 
     <div>
-      router
+      <router-link class="linked-route" to="/blog"> Blogs</router-link>
       <router-link class="linked-route" to="/"> Home </router-link>
     </div>
     <div>
