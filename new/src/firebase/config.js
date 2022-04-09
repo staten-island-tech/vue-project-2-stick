@@ -1,6 +1,6 @@
-import { ref } from "vue";
+/* import { ref } from "vue"; */
 import { getAuth } from "firebase/auth";
-import { getDatabase, set } from "firebase/database";
+/* import { getDatabase, set } from "firebase/database"; */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -26,16 +26,4 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
 
-function writeUserData(userId, name, email, imageUrl) {
-  const db = getDatabase();
-  const reference = ref(db, "users/" + userId);
-
-  set(reference, {
-    username: name,
-    email: email,
-    profile_img: imageUrl,
-  });
-}
-
-writeUserData("andreawu", "awu;", "myemail@me.com", "myimageurl");
 export { auth, app };

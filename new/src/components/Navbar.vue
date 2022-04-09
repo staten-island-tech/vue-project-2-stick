@@ -2,18 +2,24 @@
   <nav>
     <h1 class="title">Recipe list</h1>
 
-    <div class="redirect">
+    <div>
+      router
       <router-link class="linked-route" to="/"> Home </router-link>
     </div>
-    <div v>
+    <div>
       <p v-if="user !== null">Hello {{ user.email }}</p>
     </div>
-    <div class="redirect">
+    <div>
       <button class="logout" @click="handleClick">Logout</button>
     </div>
-    <div class="redirect">
+    <div>
       <router-link class="linked-route" to="/login"> Login </router-link
       ><router-link class="linked-route" to="/signup"> Signup </router-link>
+    </div>
+    <div>
+      <router-link v-if="user" class="linked-route" to="/create">
+        Create Recipe
+      </router-link>
     </div>
   </nav>
 </template>
