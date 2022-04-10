@@ -1,50 +1,59 @@
 <template>
   <div class="main">
-    <div class="cont">
-      <img
-        src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/beef-wellington-recipe-1605882724.jpg?crop=0.935xw:0.624xh;0.0646xw,0.257xh&resize=980:*"
-        alt=""
-      />
-      <div>
-        <p class="p1">
+    <div class="create sec">
+      <div class="img-container">
+        <img
+          src="https://images.collegexpress.com/article/How-to-Create-Your-Own-College-Major22.jpg"
+          alt="create"
+        />
+      </div>
+      <div class="p-container">
+        <p>
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          aliquip ex ea commodo consequat.
         </p>
       </div>
     </div>
-    <div class="cont">
-      <div>
-        <p class="p2">
+    <div class="share sec">
+      <div class="img-container">
+        <img
+          src="https://cdn.searchenginejournal.com/wp-content/uploads/2020/04/share-of-voice-what-it-is-why-it-matters-how-to-measure-it-5e985f3d6c8ae-760x400.png"
+          alt="share"
+        />
+      </div>
+      <div class="p-container">
+        <p>
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          aliquip ex ea commodo consequat.
         </p>
       </div>
-
-      <img
-        src="https://t3.ftcdn.net/jpg/03/15/70/22/240_F_315702291_lLYi5FUYX2rWW1mZfMyQr7TbciCNOYrz.jpg"
-        alt=""
-      />
     </div>
-    <div><Footer /></div>
+    <div class="explore sec">
+      <div class="img-container">
+        <img
+          src="https://innonbathcreek.com/wp-content/uploads/2018/06/explore-icon-300x232.jpg"
+          alt="explore"
+        />
+      </div>
+      <div class="p-container">
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Footer from "../components/footer.vue";
 export default {
-  components: {
-    Footer,
-  },
+  components: {},
   setup() {
     return {};
   },
@@ -53,30 +62,43 @@ export default {
 
 <style scoped>
 .main {
-  box-sizing: border-box;
-  height: 100vh;
-  width: 98.5vw;
-  background-color: black;
-}
-.cont {
-  background-color: black;
-  width: 100%;
-  height: auto;
   display: flex;
   flex-flow: row nowrap;
+  box-sizing: border-box;
+  height: 95.75vh;
+  width: 100vw;
+  background-color: black;
+  justify-content: space-around;
+  align-items: center;
+  resize: none;
 }
 
-.p1 {
-  color: white;
-  margin-top: 20%;
-  text-align: center;
+.sec {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 30%;
+  height: 70%;
+  padding: 2rem;
+  background-color: pink;
+  border-radius: 2rem;
 }
-.p2 {
-  color: white;
-  margin-top: 7%;
+
+.img-container {
+  width: 80%;
+  height: 40%;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
-.footer {
-  color: gray;
+
+img {
+  border-radius: 2rem;
   width: 100%;
+  height: 100%;
+}
+
+p {
+  color: black;
+  font-size: 2rem;
+  margin-top: 25%;
 }
 </style>
