@@ -36,6 +36,7 @@ export default {
         error.value = err.message;
       }
     };
+
     return { email, password, handleSubmit, store };
   },
 };

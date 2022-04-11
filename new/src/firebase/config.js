@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 
 import { initializeApp } from "firebase/app";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCI9O3EYgQgkpg1bodjGvMAsWcKM0-ykjw",
   authDomain: "vuex-4-fb-auth-a48cb.firebaseapp.com",

@@ -31,7 +31,12 @@
 <script>
 export default {
   setup() {
-    return {};
+    const recipe = {
+      title: "",
+      instruc: "",
+      ingred: "",
+    };
+    return { recipe };
   },
 };
 </script>

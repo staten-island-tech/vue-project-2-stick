@@ -5,6 +5,25 @@
     <Card />
     <Card />
     <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
   </div>
 </template>
 
@@ -22,10 +41,10 @@ export default {
 .card-container {
   display: flex;
   flex-flow: row wrap;
-  width: 100vw;
+  width: 99vw;
+  min-height: 95.95vh;
   height: 100%;
   justify-content: flex-start;
-
   background-color: rgb(173, 216, 230);
 }
 </style>

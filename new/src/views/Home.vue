@@ -65,9 +65,11 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   box-sizing: border-box;
-  height: 95.75vh;
+  height: 100%;
   width: 100vw;
-  background-color: black;
+  background-image: black;
+  background-size: cover;
+
   justify-content: space-around;
   align-items: center;
   resize: none;
@@ -79,7 +81,7 @@ export default {
   width: 30%;
   height: 70%;
   padding: 2rem;
-  background-color: pink;
+  background-image: url("https://www.pngitem.com/pimgs/m/15-156895_blue-patterns-background-blue-triangle-pattern-background-background.png");
   border-radius: 2rem;
 }
 
