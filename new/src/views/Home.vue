@@ -66,10 +66,14 @@ export default {
   flex-flow: row nowrap;
   box-sizing: border-box;
   height: 100%;
-  width: 100vw;
-  background-image: black;
-  background-size: cover;
-
+  background-image: url("https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+  position: fixed;
+  top: 10;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  overflow: auto;
   justify-content: space-around;
   align-items: center;
   resize: none;

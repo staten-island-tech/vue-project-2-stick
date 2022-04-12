@@ -2,6 +2,10 @@
   <nav>
     <h1 class="title">Recipe list</h1>
 
+    <div class="displayName">
+      <p v-if="user !== null">Logged in as: {{ user.email }}</p>
+    </div>
+
     <div>
       <router-link class="linked-route" to="/blog"> Blogs</router-link>
       <router-link class="linked-route" to="/"> Home </router-link>
@@ -17,13 +21,10 @@
         Signup
       </router-link>
     </div>
-    <div>
+    <div class="end">
       <router-link v-if="user" class="linked-route" to="/create">
         Create Recipe
       </router-link>
-    </div>
-    <div class="displayName">
-      <p v-if="user !== null">Hello {{ user.email }}</p>
     </div>
   </nav>
 </template>
@@ -52,10 +53,45 @@ export default {
 </script>
 
 <style scoped>
+nav {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom: solid;
+}
+
+nav h1 {
+  margin-right: auto;
+}
+
+nav a,
+nav button,
+nav span {
+  margin-left: 2rem;
+}
+
+nav a {
+  color: #131313;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+nav span {
+  color: gray;
+}
 .displayName {
-  margin-left: 1%;
+  margin-left: 15%;
+  margin-right: 5%;
 }
 p {
   font-size: 2.5rem;
+}
+
+.end {
+  margin-right: 5%;
 }
 </style>

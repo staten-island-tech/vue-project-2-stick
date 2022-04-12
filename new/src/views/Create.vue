@@ -19,7 +19,7 @@
         cols="6955"
         rows="20"
       ></textarea>
-      <button class="btn" @submit.prevent="">Complele</button>
+      <button class="btn" @submit.prevent="handleClick">Complele</button>
     </form>
   </div>
 </template>
@@ -29,6 +29,7 @@
 
 
 <script>
+import { getDatabase, set, ref } from "firebase/database";
 export default {
   setup() {
     const recipe = {
@@ -36,7 +37,19 @@ export default {
       instruc: "",
       ingred: "",
     };
-    return { recipe };
+
+    function writeRecipe() {
+      const db = getDatabase();
+      set(ref(db, "users/"), {
+        title: this.recipe.title,
+        instruction: this.recipe.instruc,
+        ingred: this.recipe.ingred,
+      });
+    }
+
+    const handleClick = writeRecipe();
+
+    return { recipe, handleClick };
   },
 };
 </script>
