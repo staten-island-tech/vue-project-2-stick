@@ -21,7 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function writeUserData(userId, name, email, imageUrl) {
-  const db = getDatabase();
+  const db = getDatabase(app);
   set(ref(db, "users/" + userId), {
     username: name,
     email: email,

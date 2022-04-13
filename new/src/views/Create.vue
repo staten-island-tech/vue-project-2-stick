@@ -1,11 +1,12 @@
 <template>
+  <!DOCTYPE html>
   <div class="newRecipe">
     <form>
       <label for="title">Recipe Name</label>
-      <input type="text" v-model="recipe.title" />
+      <input type="text" v-model="title" />
       <label for="Instruction">Recipe Instructions</label>
       <textarea
-        v-model="recipe.instruc"
+        v-model="instruc"
         name="Instructions"
         id="written"
         cols="6955"
@@ -13,13 +14,13 @@
       ></textarea>
       <label for="Ingredient">List of Ingredients</label>
       <textarea
-        v-model="recipe.ingred"
+        v-model="ingred"
         name="Ingredients"
         id="written"
         cols="6955"
         rows="20"
       ></textarea>
-      <button class="btn" @submit.prevent="handleClick">Complele</button>
+      <button class="btn" @click.prevent="writeUserData()">Complele</button>
     </form>
   </div>
 </template>
@@ -32,24 +33,25 @@
 import { getDatabase, set, ref } from "firebase/database";
 export default {
   setup() {
-    const recipe = {
-      title: "",
-      instruc: "",
-      ingred: "",
-    };
+    const title = ref("");
+    const ingred = ref("");
+    const instruc = ref("");
 
-    function writeRecipe() {
-      const db = getDatabase();
-      set(ref(db, "users/"), {
-        title: this.recipe.title,
-        instruction: this.recipe.instruc,
-        ingred: this.recipe.ingred,
-      });
+    function write() {
+      console.log(title);
+    }
+    const db = getDatabase();
+    function writeUserData() {
+      if (title !== null && ingred !== null && instruc !== null) {
+        set(ref(db, "recipe/" + title), {
+          nameRecipe: title,
+          ingredientsRecipe: ingred,
+          instructionsRecipe: instruc,
+        });
+      }
     }
 
-    const handleClick = writeRecipe();
-
-    return { recipe, handleClick };
+    return { title, ingred, instruc, write, writeUserData };
   },
 };
 </script>
