@@ -3,20 +3,21 @@
   <div class="newRecipe">
     <form>
       <label for="title">Recipe Name</label>
-      <input type="text" v-model="title" />
+      <input type="text" id="name" />
       <label for="Instruction">Recipe Instructions</label>
       <textarea
         v-model="instruc"
         name="Instructions"
-        id="written"
+        id="instruction"
         cols="6955"
         rows="20"
       ></textarea>
       <label for="Ingredient">List of Ingredients</label>
       <textarea
+        class="gredients"
         v-model="ingred"
         name="Ingredients"
-        id="written"
+        id="ingredients"
         cols="6955"
         rows="20"
       ></textarea>
@@ -33,10 +34,9 @@
 import { getDatabase, set, ref } from "firebase/database";
 export default {
   setup() {
-    const title = ref("");
-    const ingred = ref("");
-    const instruc = ref("");
-
+    const title = document.getElementById(`name`).value;
+    const ingred = document.getElementById(`ingredients`).value;
+    const instruc = document.getElementById(`instruction`).value;
     function write() {
       console.log(title);
     }
@@ -44,7 +44,6 @@ export default {
     function writeUserData() {
       if (title !== null && ingred !== null && instruc !== null) {
         set(ref(db, "recipe/" + title), {
-          nameRecipe: title,
           ingredientsRecipe: ingred,
           instructionsRecipe: instruc,
         });
