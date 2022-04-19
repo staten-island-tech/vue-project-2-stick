@@ -1,37 +1,22 @@
 <template>
   <div class="card-container">
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    <Card v-for="items in data" :key="items" />
   </div>
 </template>
 
 <script>
 import Card from "../components/card.vue";
+import { getDatabase, ref, onValue } from "firebase/database";
 export default {
   components: { Card },
   setup() {
+    const db = getDatabase();
+    const blogREf = ref(db, "recipe/");
+    onValue(blogREf, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+    });
+
     return {};
   },
 };

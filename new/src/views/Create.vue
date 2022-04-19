@@ -3,15 +3,7 @@
   <div class="newRecipe">
     <form>
       <label for="title">Recipe Name</label>
-      <input type="text" id="name" />
-      <label for="Instruction">Recipe Instructions</label>
-      <textarea
-        v-model="instruc"
-        name="Instructions"
-        id="instruction"
-        cols="6955"
-        rows="20"
-      ></textarea>
+      <input type="text" id="name" v-model="title" />
       <label for="Ingredient">List of Ingredients</label>
       <textarea
         class="gredients"
@@ -21,6 +13,15 @@
         cols="6955"
         rows="20"
       ></textarea>
+      <label for="Instruction">Recipe Instructions</label>
+      <textarea
+        v-model="instruc"
+        name="Instructions"
+        id="instruction"
+        cols="6955"
+        rows="20"
+      ></textarea>
+
       <button class="btn" @click.prevent="writeUserData()">Complele</button>
     </form>
   </div>
@@ -31,22 +32,28 @@
 
 
 <script>
-import { getDatabase, set, ref } from "firebase/database";
+import { getDatabase, set, ref, push } from "firebase/database";
+import { useRouter } from "vue-router";
 export default {
   setup() {
-    const title = document.getElementById(`name`).value;
-    const ingred = document.getElementById(`ingredients`).value;
-    const instruc = document.getElementById(`instruction`).value;
+    const route = useRouter();
+    const title = ``;
+    const ingred = ``;
+    const instruc = ``;
     function write() {
       console.log(title);
     }
     const db = getDatabase();
     function writeUserData() {
       if (title !== null && ingred !== null && instruc !== null) {
-        set(ref(db, "recipe/" + title), {
-          ingredientsRecipe: ingred,
-          instructionsRecipe: instruc,
+        const postlistRef = ref(db, "recipe/");
+        const newpostRef = push(postlistRef);
+        set(newpostRef, {
+          title: this.title,
+          ingredientsRecipe: this.ingred,
+          instructionsRecipe: this.instruc,
         });
+        route.push("/blog");
       }
     }
 
