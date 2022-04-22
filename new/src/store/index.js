@@ -1,5 +1,4 @@
 import { createStore } from "vuex";
-import { getDatabase, ref, onValue } from "firebase/database";
 
 //firebase import store
 import { auth } from "../firebase/config";
@@ -14,7 +13,7 @@ const store = createStore({
     /* points: 0 */
     user: null,
     authIsReady: false,
-    blogs: [],
+    recipe: [],
   },
   mutations: {
     /* updatePoints(state, payload){
@@ -27,13 +26,9 @@ const store = createStore({
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
     },
-    blogs(state, payload) {
-      const db = getDatabase();
-      const blogREf = ref(db, "recipe/");
-      state.blogs = onValue(blogREf, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data);
-      });
+    recipeRef(state, payload) {
+      console.log(payload);
+      console.log("recipe in store", state.recipe);
     },
   },
   actions: {
@@ -66,6 +61,11 @@ const store = createStore({
 
       await signOut(auth);
       context.commit("setUser", null);
+    },
+
+    async getRecipe(context, data) {
+      console.log("got recipe");
+      context.commit("recipeRef", data);
     },
   },
 });

@@ -1,23 +1,35 @@
 <template>
   <div class="card-container">
-    <Card v-for="items in data" :key="items" />
+    <Card
+      v-for="food in recipes"
+      :key="food"
+      :title="food.title"
+      :instruction="food.instructionsRecipe"
+      :ingredient="food.ingredientsRecipe"
+    />
   </div>
 </template>
 
 <script>
 import Card from "../components/card.vue";
+import { onMounted, computed } from "vue";
+import { useStore } from "vuex";
 import { getDatabase, ref, onValue } from "firebase/database";
 export default {
   components: { Card },
   setup() {
     const db = getDatabase();
     const blogREf = ref(db, "recipe/");
-    onValue(blogREf, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
+    const store = useStore();
+    onMounted(() => {
+      onValue(blogREf, (snapshot) => {
+        const data = snapshot.val();
+        store.dispatch("getRecipe", data);
+        /* console.log(data); */
+      });
     });
 
-    return {};
+    return { recipes: computed(() => store.state.recipe) };
   },
 };
 </script>
@@ -31,5 +43,9 @@ export default {
   height: 100%;
   justify-content: flex-start;
   background-color: rgb(173, 216, 230);
+}
+
+button {
+  margin: 0 auto;
 }
 </style>
