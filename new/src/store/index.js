@@ -2,6 +2,8 @@ import { createStore } from "vuex";
 
 //firebase import store
 import { auth } from "../firebase/config";
+import {} from "firebase/database";
+import {} from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,6 +16,7 @@ const store = createStore({
     user: null,
     authIsReady: false,
     recipe: [],
+    userRecipe: [],
   },
   mutations: {
     /* updatePoints(state, payload){
@@ -67,6 +70,8 @@ const store = createStore({
       console.log("got recipe");
       context.commit("recipeRef", data);
     },
+
+    async postRecipe(context, post) {},
   },
 });
 

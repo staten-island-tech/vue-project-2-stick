@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <template>
   <form class="login" @submit.prevent="handleSubmit">
     <h3>Signup</h3>
@@ -16,6 +17,7 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+
 export default {
   setup() {
     const email = ref("");
@@ -31,7 +33,6 @@ export default {
           email: email.value,
           password: password.value,
         });
-
         router.push("/");
       } catch (err) {
         error.value = err.message;
