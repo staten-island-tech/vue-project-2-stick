@@ -30,6 +30,7 @@ const store = createStore({
       state.authIsReady = payload;
     },
     recipeRef(state, payload) {
+      state.recipe.push(payload);
       console.log(payload);
       console.log("recipe in store", state.recipe);
     },
@@ -70,8 +71,6 @@ const store = createStore({
       console.log("got recipe");
       context.commit("recipeRef", data);
     },
-
-    async postRecipe(context, post) {},
   },
 });
 

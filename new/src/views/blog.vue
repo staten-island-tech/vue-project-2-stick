@@ -1,22 +1,21 @@
 <template>
   <div class="card-container">
-    <Card
+    <!-- <Card
       v-for="food in recipes"
       :key="food"
       :title="food.title"
       :instruction="food.instructionsRecipe"
       :ingredient="food.ingredientsRecipe"
-    />
+    /> -->
   </div>
 </template>
 
 <script>
-import Card from "../components/card.vue";
+/* import Card from "../components/card.vue"; */
 import { onMounted, computed } from "vue";
 import { useStore } from "vuex";
 import { getDatabase, ref, onValue } from "firebase/database";
 export default {
-  components: { Card },
   setup() {
     const db = getDatabase();
     const blogREf = ref(db, "recipe/");
@@ -24,7 +23,13 @@ export default {
     onMounted(() => {
       onValue(blogREf, (snapshot) => {
         const data = snapshot.val();
-        store.dispatch("getRecipe", data);
+        const dataList = [];
+        for (const recipe in data) {
+          dataList.push(`title: ${recipe.title}`);
+        }
+        console.log(dataList);
+        console.log(data);
+        store.dispatch("getRecipe");
         /* console.log(data); */
       });
     });
