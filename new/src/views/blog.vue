@@ -24,11 +24,13 @@ export default {
       onValue(blogREf, (snapshot) => {
         const data = snapshot.val();
         const dataList = [];
-        for (const recipe in data) {
-          dataList.push(`title: ${recipe.title}`);
-        }
+
+        /* for (const recipe in data) {
+          
+        } */
         console.log(dataList);
         console.log(data);
+
         store.dispatch("getRecipe");
         /* console.log(data); */
       });
