@@ -32,7 +32,7 @@
 
 
 <script>
-import { getDatabase, set, ref, push } from "firebase/database";
+import { getDatabase, set, ref, push, update } from "firebase/database";
 import { useRouter } from "vue-router";
 export default {
   setup() {
@@ -48,11 +48,19 @@ export default {
       if (title !== null && ingred !== null && instruc !== null) {
         const postlistRef = ref(db, "recipe/");
         const newpostRef = push(postlistRef);
-        set(newpostRef, {
+        const newPost = set(newpostRef, {
           title: this.title,
           ingredientsRecipe: this.ingred,
           instructionsRecipe: this.instruc,
-        });
+          id: newpostRef.key,
+        })
+          .then(() => {
+            console.log("Post logged");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        update[newpostRef] = newPost;
         route.push("/blog");
       }
     }

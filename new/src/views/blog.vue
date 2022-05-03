@@ -31,7 +31,12 @@ export default {
           console.log(key);
           const childData = childSnapshot.exportVal();
           console.log(childData);
-          store.dispatch("getRecipe", childData);
+
+          childSnapshot.forEach((e) => {
+            if (e.exists === false) {
+              store.dispatch("getRecipe", e);
+            }
+          });
         });
 
         /* for (const recipe in data) {
