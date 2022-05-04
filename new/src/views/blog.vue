@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
     <Card
-      v-for="food in recipes"
+      v-for="food in recipe"
       :key="food"
       :title="food.title"
       :text="food.instructionsRecipe"
@@ -12,7 +12,7 @@
 
 <script>
 import Card from "../components/card.vue";
-import { onMounted, computed } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { getDatabase, ref, onValue } from "firebase/database";
 
@@ -23,30 +23,22 @@ export default {
     const db = getDatabase();
     const blogREf = ref(db, "recipe/");
     const store = useStore();
-    onMounted(() => {
-      onValue(blogREf, (snapshot) => {
-        /* store.dispatch("getRecipe", data); */
-        snapshot.forEach(function (childSnapshot) {
-          const key = childSnapshot.key;
-          console.log(key);
-          const childData = childSnapshot.exportVal();
-          console.log(childData);
-
-          childSnapshot.forEach((e) => {
-            if (e.exists === false) {
-              store.dispatch("getRecipe", e);
-            }
-          });
-        });
-
-        /* for (const recipe in data) {
-          
-        } */
-        /* console.log(data); */
+    const list = [];
+    console.log(list);
+    onValue(blogREf, (snapshot) => {
+      snapshot.forEach(function (childSnapshot) {
+        /* const key = childSnapshot.key;
+        console.log(key); */
+        const childData = childSnapshot.exportVal();
+        console.log(childData);
+        if (list.includes(childData) === false) {
+          list.push(childData);
+        }
+        store.dispatch("getRecipe", childData);
       });
     });
 
-    return { recipes: computed(() => store.state.recipe), Card };
+    return { recipe: computed(() => store.state.recipe), Card };
   },
 };
 </script>

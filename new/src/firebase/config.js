@@ -1,6 +1,5 @@
 /* import { ref } from "vue"; */
 import { getAuth } from "firebase/auth";
-import { getDatabase, set, ref } from "firebase/database";
 
 import { initializeApp } from "firebase/app";
 
@@ -20,16 +19,6 @@ const firebaseConfig = {
 //init
 const app = initializeApp(firebaseConfig);
 
-function writeUserData(userId, name, email, imageUrl) {
-  const db = getDatabase(app);
-  set(ref(db, "users/" + userId), {
-    username: name,
-    email: email,
-    profile_picture: imageUrl,
-  });
-}
-
-writeUserData("tim", "time", "time@gamilc.om", null);
 //init firebase auth
 
 const auth = getAuth();

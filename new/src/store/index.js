@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 //firebase import store
 import { auth } from "../firebase/config";
-import {} from "firebase/database";
+import { getDatabase, set, ref } from "firebase/database";
 import {} from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
@@ -30,7 +30,16 @@ const store = createStore({
       state.authIsReady = payload;
     },
     recipeRef(state, payload) {
-      state.recipe.push(payload);
+      const isFound = state.recipe.some((e) => {
+        if (e.id === payload.id) {
+          return true;
+        }
+      });
+
+      if (isFound === false) {
+        state.recipe.push(payload);
+      }
+
       console.log(payload);
       console.log("recipe in store", state.recipe);
     },
@@ -46,6 +55,14 @@ const store = createStore({
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         context.commit("setUser", res.user);
+
+        const db = getDatabase();
+
+        set(ref(db, "user/" + auth.currentUser.uid), {
+          user: auth.currentUser.email,
+          recipe: [],
+          uuid: auth.currentUser.uid,
+        });
       } else {
         throw new Error("could not complete signup");
       }
@@ -81,5 +98,3 @@ const unsub = onAuthStateChanged(auth, (user) => {
 });
 //export store
 export default store;
-
-

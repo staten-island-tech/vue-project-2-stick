@@ -27,16 +27,15 @@
   </div>
 </template>
 
-
-
-
-
 <script>
-import { getDatabase, set, ref, push, update } from "firebase/database";
+import { getDatabase, set, ref, push } from "firebase/database";
+import { getAuth } from "firebase/auth";
 import { useRouter } from "vue-router";
+
 export default {
   setup() {
     const route = useRouter();
+    const auth = getAuth();
     const title = ``;
     const ingred = ``;
     const instruc = ``;
@@ -48,11 +47,12 @@ export default {
       if (title !== null && ingred !== null && instruc !== null) {
         const postlistRef = ref(db, "recipe/");
         const newpostRef = push(postlistRef);
-        const newPost = set(newpostRef, {
+        set(newpostRef, {
           title: this.title,
           ingredientsRecipe: this.ingred,
           instructionsRecipe: this.instruc,
           id: newpostRef.key,
+          author: auth.currentUser.email,
         })
           .then(() => {
             console.log("Post logged");
@@ -60,7 +60,7 @@ export default {
           .catch((error) => {
             console.log(error);
           });
-        update[newpostRef] = newPost;
+
         route.push("/blog");
       }
     }
