@@ -22,6 +22,8 @@
         rows="20"
       ></textarea>
 
+      <Img />
+
       <button class="btn" @click.prevent="writeUserData()">Complele</button>
     </form>
   </div>
@@ -31,17 +33,23 @@
 import { getDatabase, set, ref, push } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "vue-router";
+import Img from "../components/imgPrv.vue";
 
 export default {
+  components: { Img },
   setup() {
     const route = useRouter();
     const auth = getAuth();
     const title = ``;
     const ingred = ``;
     const instruc = ``;
+
+    const imgURL = "";
+    console.log(imgURL);
     function write() {
       console.log(title);
     }
+
     const db = getDatabase();
     function writeUserData() {
       if (title !== null && ingred !== null && instruc !== null) {
