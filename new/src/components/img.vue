@@ -10,9 +10,15 @@
 </template>
 
 <script>
-import { useStore } from "vuex";
 export default {
-  data() {
+  setup() {
+    function selectImage() {
+      this.$refs.fileInput.click();
+    }
+
+    return {};
+  },
+  /*    data() {
     return {
       previewImage: null,
     };
@@ -34,17 +40,9 @@ export default {
       }
     },
   },
+}; */
 };
 </script>
 
-<style scoped>
-.imagePreviewWrapper {
-  width: 250px;
-  height: 250px;
-  display: block;
-  cursor: pointer;
-  margin: 0 auto 30px;
-  background-size: cover;
-  background-position: center center;
-}
+<style lang="scss" scoped>
 </style>
