@@ -31,26 +31,32 @@
 import { getDatabase, set, ref, push } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "vue-router";
-import Img from "../components/imgPrv.vue";
+import Img from "../components/new.vue";
+import { useStore } from "vuex";
 export default {
+  components: {
+    Img,
+  },
   setup() {
     const route = useRouter();
     const auth = getAuth();
     const title = ``;
     const ingred = ``;
     const instruc = ``;
-
+    const store = useStore();
     const db = getDatabase();
     function writeUserData() {
       if (title !== null && ingred !== null && instruc !== null) {
         const postlistRef = ref(db, "recipe/");
         const newpostRef = push(postlistRef);
+        const img = store.preview;
         set(newpostRef, {
           title: this.title,
           ingredientsRecipe: this.ingred,
           instructionsRecipe: this.instruc,
           id: newpostRef.key,
           author: auth.currentUser.email,
+          img: img,
         })
           .then(() => {
             console.log("Post logged");

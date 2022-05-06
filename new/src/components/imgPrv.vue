@@ -22,6 +22,7 @@ export default {
       this.$refs.fileInput.click();
     },
     pickFile() {
+      const store = useStore();
       let input = this.$refs.fileInput;
       let file = input.files;
       if (file && file[0]) {
@@ -31,6 +32,7 @@ export default {
         };
         reader.readAsDataURL(file[0]);
         this.$emit("input", file[0]);
+        store.commit("preview", file[0]);
       }
     },
   },

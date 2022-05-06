@@ -17,6 +17,7 @@ const store = createStore({
     authIsReady: false,
     recipe: [],
     userRecipe: [],
+    preview: null,
   },
   mutations: {
     /* updatePoints(state, payload){
@@ -42,6 +43,10 @@ const store = createStore({
 
       console.log(payload);
       console.log("recipe in store", state.recipe);
+    },
+    imgprv(state, payload) {
+      state.preview = payload;
+      console.log(state.preview);
     },
   },
   actions: {
