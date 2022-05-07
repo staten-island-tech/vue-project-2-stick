@@ -49,14 +49,14 @@ export default {
       if (title !== null && ingred !== null && instruc !== null) {
         const postlistRef = ref(db, "recipe/");
         const newpostRef = push(postlistRef);
-        const img = store.preview;
+
         set(newpostRef, {
           title: this.title,
           ingredientsRecipe: this.ingred,
           instructionsRecipe: this.instruc,
           id: newpostRef.key,
           author: auth.currentUser.email,
-          img: img,
+          img: store.state.preview,
         })
           .then(() => {
             console.log("Post logged");
