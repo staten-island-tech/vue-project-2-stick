@@ -1,41 +1,25 @@
 <template>
   <!-- <!DOCTYPE html> -->
   <div class="newRecipe">
-    <form>
-      <label for="title">Recipe Name</label>
-      <input type="text" id="name" v-model="title" />
-      <label for="Ingredient">List of Ingredients</label>
-      <textarea
-        class="gredients"
-        v-model="ingred"
-        name="Ingredients"
-        id="ingredients"
-        cols="6955"
-        rows="20"
-      ></textarea>
-      <label for="Instruction">Recipe Instructions</label>
-      <textarea
-        v-model="instruc"
-        name="Instructions"
-        id="instruction"
-        cols="6955"
-        rows="20"
-      ></textarea>
-      <Img />
-      <button class="btn" @click.prevent="writeUserData()">Complele</button>
-    </form>
+    <Form />
+    <Img />
+
+    <button class="btn" @click.prevent="writeUserData()">Complele</button>
   </div>
 </template>
 
 <script>
 import { getDatabase, set, ref, push } from "firebase/database";
+
 import { getAuth } from "firebase/auth";
 import { useRouter } from "vue-router";
 import Img from "../components/new.vue";
+import Form from "../components/form.vue";
 import { useStore } from "vuex";
 export default {
   components: {
     Img,
+    Form,
   },
   setup() {
     const route = useRouter();
@@ -69,7 +53,11 @@ export default {
       }
     }
 
-    return { title, ingred, instruc, writeUserData };
+    function ready() {
+      store.commit("ready");
+    }
+
+    return { title, ingred, instruc, writeUserData, ready };
   },
 };
 </script>

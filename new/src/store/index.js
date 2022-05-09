@@ -15,9 +15,13 @@ const store = createStore({
     /* points: 0 */
     user: null,
     authIsReady: false,
-    recipe: [],
+    recipeName: null,
+    recipeInstruction: null,
+    recipeIngredients: null,
+    imgPreview: null,
+    imgRoute: null,
+    readyUp: false,
     userRecipe: [],
-    preview: null,
   },
   mutations: {
     /* updatePoints(state, payload){
@@ -30,7 +34,7 @@ const store = createStore({
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
     },
-    recipeRef(state, payload) {
+    /* recipeRef(state, payload) {
       const isFound = state.recipe.some((e) => {
         if (e.id === payload.id) {
           return true;
@@ -43,10 +47,28 @@ const store = createStore({
 
       console.log(payload);
       console.log("recipe in store", state.recipe);
-    },
+    }, */
+
+    //recipe parts
     imgprv(state, payload) {
       state.preview = payload;
       console.log(state.preview);
+    },
+    instruction(state, payload) {
+      state.recipeInstruction = payload;
+      console.log(state.recipeInstruction);
+    },
+    Name(state, payload) {
+      state.recipeName = payload;
+      console.log(state.recipeName);
+    },
+    ingredients(state, payload) {
+      state.recipeIngredients = payload;
+      console.log(state.recipeIngredients);
+    },
+    ready(state) {
+      state.readyUp = true;
+      console.log(state.readyUp);
     },
   },
   actions: {
