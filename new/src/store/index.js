@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 //firebase import store
 import { auth } from "../firebase/config";
-import { getDatabase, set, ref } from "firebase/database";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 import {} from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
@@ -20,7 +20,8 @@ const store = createStore({
     recipeIngredients: null,
     imgPreview: null,
     imgRoute: null,
-    readyUp: false,
+    upload: 0,
+    dataUploaded: null,
     userRecipe: [],
   },
   mutations: {
@@ -67,8 +68,12 @@ const store = createStore({
       console.log(state.recipeIngredients);
     },
     ready(state) {
-      state.readyUp = true;
-      console.log(state.readyUp);
+      state.upload++;
+      console.log(state.upload);
+    },
+    data(state, payload) {
+      state.dataUploaded = payload;
+      console.log(state.dataUploaded);
     },
   },
   actions: {
@@ -82,14 +87,14 @@ const store = createStore({
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         context.commit("setUser", res.user);
-
+        /* 
         const db = getDatabase();
 
         set(ref(db, "user/" + auth.currentUser.uid), {
           user: auth.currentUser.email,
           recipe: [],
           uuid: auth.currentUser.uid,
-        });
+        }); */
       } else {
         throw new Error("could not complete signup");
       }
@@ -114,6 +119,17 @@ const store = createStore({
     async getRecipe(context, data) {
       console.log("got recipe");
       context.commit("recipeRef", data);
+    },
+
+    async upload(context, data) {
+      context.commit("data", data);
+
+      const storage = getStorage();
+      const storageRef = ref(storage, "Images");
+
+      uploadBytes(storageRef, data).then((snapshot) => {
+        console.log(snapshot);
+      });
     },
   },
 });

@@ -1,25 +1,46 @@
 <template>
   <!-- <!DOCTYPE html> -->
   <div class="newRecipe">
-    <Form />
+    <form>
+      <label for="title">Recipe Name</label>
+      <input type="text" id="name" v-model="title" required />
+      <label for="Ingredient">List of Ingredients</label>
+      <textarea
+        class="gredients"
+        v-model="ingred"
+        name="Ingredients"
+        id="ingredients"
+        cols="6955"
+        rows="20"
+        required
+      ></textarea>
+      <label for="Instruction">Recipe Instructions</label>
+      <textarea
+        v-model="instruc"
+        name="Instructions"
+        id="instruction"
+        cols="6955"
+        rows="20"
+        required
+      ></textarea>
+    </form>
+
     <Img />
 
-    <button class="btn" @click.prevent="writeUserData()">Complele</button>
+    <button class="btn" @click.prevent="writeUserData">Complele</button>
   </div>
 </template>
 
 <script>
 import { getDatabase, set, ref, push } from "firebase/database";
-
 import { getAuth } from "firebase/auth";
 import { useRouter } from "vue-router";
 import Img from "../components/new.vue";
-import Form from "../components/form.vue";
+
 import { useStore } from "vuex";
 export default {
   components: {
     Img,
-    Form,
   },
   setup() {
     const route = useRouter();
@@ -29,30 +50,35 @@ export default {
     const instruc = ``;
     const store = useStore();
     const db = getDatabase();
-    function writeUserData() {
-      if (title !== null && ingred !== null && instruc !== null) {
-        const postlistRef = ref(db, "recipe/");
-        const newpostRef = push(postlistRef);
 
-        set(newpostRef, {
-          title: this.title,
-          ingredientsRecipe: this.ingred,
-          instructionsRecipe: this.instruc,
-          id: newpostRef.key,
-          author: auth.currentUser.email,
-          img: store.state.preview,
-        })
-          .then(() => {
-            console.log("Post logged");
+    const writeUserData = async () => {
+      try {
+        await store.dispatch("upload", store.state.imgprv);
+        if (title !== null && ingred !== null && instruc !== null) {
+          const postlistRef = ref(db, "recipe/");
+          const newpostRef = push(postlistRef);
+
+          set(newpostRef, {
+            name1: this.title,
+            ingredientsRecipe: this.ingred,
+            instructionsRecipe: this.instruc,
+            id: newpostRef.key,
+            author: auth.currentUser.email,
+            img: store.state.preview,
           })
-          .catch((error) => {
-            console.log(error);
-          });
+            .then(() => {
+              console.log("Post logged");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
 
-        route.push("/blog");
+          route.push("/blog");
+        }
+      } catch (err) {
+        console.log(err.message);
       }
-    }
-
+    };
     function ready() {
       store.commit("ready");
     }
