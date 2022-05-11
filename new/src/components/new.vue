@@ -1,8 +1,8 @@
 <template>
   <div>
-    <input id="file" type="file" v-on:change="onFileChange" required />
+    <input id="file" type="text" v-on:change="onFileChange" required />
 
-    <img class="imagePreviewWrapper" id="img" :src="null" alt="" />
+    <img class="imagePreviewWrapper" id="img" src="f" alt="" />
   </div>
 </template>
 
@@ -12,18 +12,10 @@ import { useStore } from "vuex";
 
 export default {
   setup() {
-    let usefile = ref(null);
     const store = useStore();
     console.log(store);
 
-    /*  watch(store.state.upload, async (newCount, oldCount) => {
-      console.log(newCount);
-      console.log(oldCount);
-      if (newCount > 1) {
-        store.dispatch
-      }
-    }); */
-    function onFileChange() {
+    /* function onFileChange() {
       let urlFile = null;
       let input = ref(document.getElementById("file")).value;
       let use = input.files;
@@ -34,16 +26,15 @@ export default {
           store.commit("imgprv", reader.result);
         };
         reader.readAsDataURL(use[0]);
-        usefile = use[0];
 
-        usefile = use[0];
         console.log(urlFile);
       }
+    } */
+    function onFileChange() {
+      console.log(ref(document.getElementById("file")).value);
     }
-
     return {
       onFileChange,
-      usefile,
     };
   },
 };
