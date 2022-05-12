@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 //firebase import store
 import { auth } from "../firebase/config";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+
 import {} from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
@@ -15,14 +15,9 @@ const store = createStore({
     /* points: 0 */
     user: null,
     authIsReady: false,
-    recipeName: null,
-    recipeInstruction: null,
-    recipeIngredients: null,
     imgPreview: null,
-    imgRoute: null,
-    upload: 0,
-    dataUploaded: null,
     userRecipe: [],
+    recipe: [],
   },
   mutations: {
     /* updatePoints(state, payload){
@@ -35,7 +30,7 @@ const store = createStore({
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
     },
-    /* recipeRef(state, payload) {
+    recipeRef(state, payload) {
       const isFound = state.recipe.some((e) => {
         if (e.id === payload.id) {
           return true;
@@ -48,32 +43,12 @@ const store = createStore({
 
       console.log(payload);
       console.log("recipe in store", state.recipe);
-    }, */
+    },
 
     //recipe parts
     imgprv(state, payload) {
-      state.preview = payload;
-      console.log(state.preview);
-    },
-    instruction(state, payload) {
-      state.recipeInstruction = payload;
-      console.log(state.recipeInstruction);
-    },
-    Name(state, payload) {
-      state.recipeName = payload;
-      console.log(state.recipeName);
-    },
-    ingredients(state, payload) {
-      state.recipeIngredients = payload;
-      console.log(state.recipeIngredients);
-    },
-    ready(state) {
-      state.upload++;
-      console.log(state.upload);
-    },
-    data(state, payload) {
-      state.dataUploaded = payload;
-      console.log(state.dataUploaded);
+      state.imgPreview = payload;
+      console.log(state.imgPreview);
     },
   },
   actions: {
@@ -119,17 +94,6 @@ const store = createStore({
     async getRecipe(context, data) {
       console.log("got recipe");
       context.commit("recipeRef", data);
-    },
-
-    async upload(context, data) {
-      context.commit("data", data);
-
-      const storage = getStorage();
-      const storageRef = ref(storage, "Images");
-
-      uploadBytes(storageRef, data).then((snapshot) => {
-        console.log(snapshot);
-      });
     },
   },
 });

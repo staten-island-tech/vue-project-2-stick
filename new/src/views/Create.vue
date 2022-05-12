@@ -4,6 +4,16 @@
     <form>
       <label for="title">Recipe Name</label>
       <input type="text" id="name" v-model="title" required />
+      <label for="Description">Description</label>
+      <textarea
+        class="description"
+        v-model="desti"
+        name="Description"
+        id="descriptions"
+        cols="6955"
+        rows="20"
+        required
+      ></textarea>
       <label for="Ingredient">List of Ingredients</label>
       <textarea
         class="gredients"
@@ -48,42 +58,42 @@ export default {
     const title = ``;
     const ingred = ``;
     const instruc = ``;
+    const desti = ``;
     const store = useStore();
     const db = getDatabase();
 
-    const writeUserData = async () => {
-      try {
-        await store.dispatch("upload", store.state.imgprv);
-        if (title !== null && ingred !== null && instruc !== null) {
-          const postlistRef = ref(db, "recipe/");
-          const newpostRef = push(postlistRef);
+    function writeUserData() {
+      console.log(this.desti);
+      if (
+        title !== null &&
+        ingred !== null &&
+        instruc !== null &&
+        desti !== null
+      ) {
+        const postlistRef = ref(db, "recipe/");
+        const newpostRef = push(postlistRef);
 
-          set(newpostRef, {
-            name1: this.title,
-            ingredientsRecipe: this.ingred,
-            instructionsRecipe: this.instruc,
-            id: newpostRef.key,
-            author: auth.currentUser.email,
-            img: store.state.preview,
+        set(newpostRef, {
+          title: this.title,
+          ingredientsRecipe: this.ingred,
+          instructionsRecipe: this.instruc,
+
+          id: newpostRef.key,
+          author: auth.currentUser.email,
+          img: store.state.imgPreview,
+        })
+          .then(() => {
+            console.log("Post logged");
           })
-            .then(() => {
-              console.log("Post logged");
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          .catch((error) => {
+            console.log(error);
+          });
 
-          route.push("/blog");
-        }
-      } catch (err) {
-        console.log(err.message);
+        route.push("/blog");
       }
-    };
-    function ready() {
-      store.commit("ready");
     }
 
-    return { title, ingred, instruc, writeUserData, ready };
+    return { title, ingred, instruc, writeUserData };
   },
 };
 </script>

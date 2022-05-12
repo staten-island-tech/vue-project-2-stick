@@ -1,9 +1,11 @@
 <template>
   <div class="card">
     <h2 class="recipe-name">{{ title }}</h2>
-    <!-- <img class="recipe-img" :src="img" alt="" /> -->
-    <p class="ingredient">{{ item }}</p>
-    <p class="instruction">{{ text }}</p>
+
+    <img class="recipe-img" :src="img" alt="" />
+    <p class="description">{{ text }}</p>
+    <!-- <p class="ingredient">{{ item }}</p>
+    <p class="instruction">{{ text }}</p> -->
   </div>
 </template>
 
@@ -11,9 +13,8 @@
 export default {
   props: {
     title: String,
-    /* img: String, */
-    item: String,
-    text: String,
+    img: String,
+    description: String,
   },
 };
 </script>
@@ -39,13 +40,8 @@ export default {
   height: auto;
   margin: 0 auto;
 }
-
-.ingredient {
-  color: white;
-  font-size: 2rem;
-}
-.instruction {
-  color: white;
+.description {
+  margin: 0 auto;
   font-size: 2rem;
 }
 </style>

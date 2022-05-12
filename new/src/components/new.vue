@@ -1,8 +1,7 @@
 <template>
   <div>
-    <input id="file" type="text" v-on:change="onFileChange" required />
-
-    <img class="imagePreviewWrapper" id="img" src="f" alt="" />
+    <input id="file" type="text" v-on:change="onFileChange" />
+    <img class="imagePreviewWrapper" id="img" src="" alt="" />
   </div>
 </template>
 
@@ -30,8 +29,18 @@ export default {
         console.log(urlFile);
       }
     } */
+
     function onFileChange() {
-      console.log(ref(document.getElementById("file")).value);
+      let img = ref(document.getElementById("file")).value;
+      let link = img.value;
+      console.log(link);
+      if (link !== null) {
+        document.getElementById("img").src = link;
+        store.commit("imgprv", link);
+      } else {
+        document.getElementById("img").src = null;
+        store.commit("imgprv", null);
+      }
     }
     return {
       onFileChange,
@@ -41,12 +50,16 @@ export default {
 </script>
 
 <style  scoped>
+input {
+  margin-top: 2%;
+}
 .imagePreviewWrapper {
   width: 250px;
   height: 250px;
   display: block;
   cursor: pointer;
   margin: 0 auto 30px;
+  margin-top: 2%;
   background-size: cover;
   background-position: center center;
 }

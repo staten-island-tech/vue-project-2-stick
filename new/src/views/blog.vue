@@ -4,6 +4,7 @@
       v-for="food in recipe"
       :key="food"
       :title="food.title"
+      :img="food.img"
       :text="food.instructionsRecipe"
       :item="food.ingredientsRecipe"
     />
