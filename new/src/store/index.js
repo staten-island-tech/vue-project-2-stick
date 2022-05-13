@@ -18,6 +18,7 @@ const store = createStore({
     imgPreview: null,
     userRecipe: [],
     recipe: [],
+    editRecipe: [],
   },
   mutations: {
     /* updatePoints(state, payload){
@@ -49,6 +50,10 @@ const store = createStore({
     imgprv(state, payload) {
       state.imgPreview = payload;
       console.log(state.imgPreview);
+    },
+    Edit(state, payload) {
+      state.editRecipe = payload;
+      console.log(state.editRecipe);
     },
   },
   actions: {

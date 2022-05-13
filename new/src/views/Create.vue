@@ -77,7 +77,7 @@ export default {
           title: this.title,
           ingredientsRecipe: this.ingred,
           instructionsRecipe: this.instruc,
-
+          descRecipe: this.desti,
           id: newpostRef.key,
           author: auth.currentUser.email,
           img: store.state.imgPreview,

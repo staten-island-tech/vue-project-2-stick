@@ -1,20 +1,39 @@
 <template>
-  <div class="card">
+  <button class="card" @click="goTo({ id })">
     <h2 class="recipe-name">{{ title }}</h2>
 
     <img class="recipe-img" :src="img" alt="" />
     <p class="description">{{ text }}</p>
     <!-- <p class="ingredient">{{ item }}</p>
     <p class="instruction">{{ text }}</p> -->
-  </div>
+  </button>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useStore } from "vuex";
 export default {
   props: {
     title: String,
     img: String,
     description: String,
+    id: String,
+  },
+  setup() {
+    const store = useStore();
+    const db = getDatabase();
+    const router = useRouter();
+    function goTo(id) {
+      let idRef = id.id;
+      const blog = ref(db, "recipe/" + idRef);
+      onValue(blog, (snapshot) => {
+        const data = snapshot.val();
+        store.commit("Edit", data);
+      });
+      router.push("/BlogView");
+    }
+    return { goTo };
   },
 };
 </script>

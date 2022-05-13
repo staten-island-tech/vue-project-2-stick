@@ -3,6 +3,7 @@
     <Card
       v-for="food in recipe"
       :key="food"
+      :id="food.id"
       :title="food.title"
       :img="food.img"
       :text="food.instructionsRecipe"

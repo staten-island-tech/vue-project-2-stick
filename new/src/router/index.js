@@ -4,6 +4,7 @@ import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import Create from "../views/Create.vue";
 import Blog from "../views/blog.vue";
+import BlogView from "../views/blogView.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/blog",
     name: "Blog",
     component: Blog,
+  },
+  {
+    path: "/blogView",
+    name: "BlogView",
+    component: BlogView,
   },
 ];
 
