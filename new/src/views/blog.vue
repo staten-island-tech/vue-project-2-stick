@@ -25,17 +25,12 @@ export default {
     const db = getDatabase();
     const blogREf = ref(db, "recipe/");
     const store = useStore();
-    const list = [];
-    console.log(list);
+
     onValue(blogREf, (snapshot) => {
       snapshot.forEach(function (childSnapshot) {
-        /* const key = childSnapshot.key;
-        console.log(key); */
         const childData = childSnapshot.exportVal();
         console.log(childData);
-        if (list.includes(childData) === false) {
-          list.push(childData);
-        }
+
         store.dispatch("getRecipe", childData);
       });
     });

@@ -25,6 +25,7 @@ export default {
     const db = getDatabase();
     const router = useRouter();
     function goTo(id) {
+      console.log("working");
       let idRef = id.id;
       const blog = ref(db, "recipe/" + idRef);
       onValue(blog, (snapshot) => {

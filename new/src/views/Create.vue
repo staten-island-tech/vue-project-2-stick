@@ -4,12 +4,12 @@
     <form>
       <label for="title">Recipe Name</label>
       <input type="text" id="name" v-model="title" required />
-      <label for="Description">Description</label>
+      <label for="Ingredient">List of Ingredients</label>
       <textarea
-        class="description"
-        v-model="desti"
-        name="Description"
-        id="descriptions"
+        class="gredients"
+        v-model="desc"
+        name="Ingredients"
+        id="ingredients"
         cols="6955"
         rows="20"
         required
@@ -58,17 +58,16 @@ export default {
     const title = ``;
     const ingred = ``;
     const instruc = ``;
-    const desti = ``;
+    const desc = ``;
     const store = useStore();
     const db = getDatabase();
 
     function writeUserData() {
-      console.log(this.desti);
       if (
         title !== null &&
         ingred !== null &&
         instruc !== null &&
-        desti !== null
+        desc !== null
       ) {
         const postlistRef = ref(db, "recipe/");
         const newpostRef = push(postlistRef);
@@ -77,7 +76,7 @@ export default {
           title: this.title,
           ingredientsRecipe: this.ingred,
           instructionsRecipe: this.instruc,
-          descRecipe: this.desti,
+          descsRecipe: this.desc,
           id: newpostRef.key,
           author: auth.currentUser.email,
           img: store.state.imgPreview,
@@ -93,7 +92,7 @@ export default {
       }
     }
 
-    return { title, ingred, instruc, writeUserData };
+    return { title, ingred, instruc, writeUserData, desc };
   },
 };
 </script>

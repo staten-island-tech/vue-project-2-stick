@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog-container">
     <Blog
       :title="data.title"
       :img="data.img"
@@ -30,5 +30,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
+div .blog-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 99vw;
+  min-height: 95.95vh;
+  height: 100%;
+  justify-content: flex-start;
+  background-color: rgb(238, 177, 221);
+}
 </style>
