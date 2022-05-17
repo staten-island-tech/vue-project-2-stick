@@ -4,7 +4,7 @@
     <form>
       <label for="title">Recipe Name</label>
       <input type="text" id="name" v-model="title" required />
-      <label for="Ingredient">List of Ingredients</label>
+      <label for="Ingredient">Description</label>
       <textarea
         class="gredients"
         v-model="desc"

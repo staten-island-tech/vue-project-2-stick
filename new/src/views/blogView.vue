@@ -5,6 +5,7 @@
       :img="data.img"
       :ingredient="data.ingredientsRecipe"
       :instruction="data.instructionsRecipe"
+      :description="data.descsRecipe"
     />
   </div>
 </template>

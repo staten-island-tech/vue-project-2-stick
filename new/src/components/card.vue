@@ -16,6 +16,7 @@ import { useStore } from "vuex";
 export default {
   props: {
     title: String,
+    text: String,
     img: String,
     description: String,
     id: String,
