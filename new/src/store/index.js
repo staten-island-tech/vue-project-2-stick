@@ -16,7 +16,7 @@ const store = createStore({
     user: null,
     authIsReady: false,
     imgPreview: null,
-    userRecipe: [],
+    thisUserRecipe: [],
     recipe: [],
     editRecipe: [],
   },
@@ -54,6 +54,13 @@ const store = createStore({
     Edit(state, payload) {
       state.editRecipe = payload;
       console.log(state.editRecipe);
+    },
+    myOwn(state, payload) {
+      const recipe = payload;
+      recipe.forEach((element) => {
+        state.thisUserRecipe.push(element);
+      });
+      console.log(state.thisUserRecipe);
     },
   },
   actions: {
@@ -99,6 +106,14 @@ const store = createStore({
     async getRecipe(context, data) {
       console.log("got recipe");
       context.commit("recipeRef", data);
+    },
+    async userRecipe(context, data) {
+      console.log(data);
+      if (data.id === this.state.user.id) {
+        console.log();
+      }
+      console.log("got this users recipe");
+      context.commit("myOwn");
     },
   },
 });

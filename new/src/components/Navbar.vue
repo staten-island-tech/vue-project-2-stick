@@ -7,8 +7,9 @@
     </div>
 
     <div>
-      <router-link class="linked-route" to="/blog"> Blogs</router-link>
+      <router-link class="linked-route" to="/blog"> Recipe</router-link>
       <router-link class="linked-route" to="/"> Home </router-link>
+      <router-link class="linked-route" to="/MyRecipe"> My Recipe </router-link>
     </div>
 
     <div>

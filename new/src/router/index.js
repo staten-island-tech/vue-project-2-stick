@@ -5,6 +5,7 @@ import Signup from "../views/Signup.vue";
 import Create from "../views/Create.vue";
 import Blog from "../views/blog.vue";
 import BlogView from "../views/blogView.vue";
+import MyRecipe from "../views/MyRecipe.vue";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: "/blogView",
     name: "BlogView",
     component: BlogView,
+  },
+  {
+    path: "/MyRecipe",
+    name: "MyRecipe",
+    component: MyRecipe,
   },
 ];
 
