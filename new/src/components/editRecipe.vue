@@ -1,12 +1,11 @@
 <template>
-  <button class="card" @click="goTo({ id })">
+  <div class="card">
     <h2 class="recipe-name">{{ title }}</h2>
 
     <img class="recipe-img" :src="img" alt="" />
     <p class="description">{{ text }}</p>
-    <!-- <p class="ingredient">{{ item }}</p>
-    <p class="instruction">{{ text }}</p> -->
-  </button>
+    <button class="btn" @click="goTo({ id })">Edit</button>
+  </div>
 </template>
 
 <script>
@@ -31,9 +30,9 @@ export default {
       const blog = ref(db, "recipe/" + idRef);
       onValue(blog, (snapshot) => {
         const data = snapshot.val();
-        store.commit("view", data);
+        store.commit("edit", data);
       });
-      router.push("/BlogView");
+      router.push("/editView");
     }
     return { goTo };
   },
@@ -62,7 +61,20 @@ export default {
   margin: 0 auto;
 }
 .description {
+  background-color: rgb(228, 163, 163);
+  border-radius: 2rem;
+  width: 95%;
+  padding: 2%;
+  text-align: center;
   margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
   font-size: 2rem;
+}
+
+.btn {
+  width: 50%;
+  height: 15%;
+  margin: 0 auto;
 }
 </style>

@@ -18,7 +18,9 @@ const store = createStore({
     imgPreview: null,
     thisUserRecipe: [],
     recipe: [],
+    viewRecipe: [],
     editRecipe: [],
+    newData: {},
   },
   mutations: {
     /* updatePoints(state, payload){
@@ -32,14 +34,28 @@ const store = createStore({
       state.authIsReady = payload;
     },
     recipeRef(state, payload) {
-      const isFound = state.recipe.some((e) => {
-        if (e.id === payload.id) {
+      let isFound = state.recipe.some((e) => {
+        if (
+          e.id === payload.id &&
+          e.instructionsRecipe === payload.instructionsRecipe &&
+          e.img === payload.img &&
+          e.ingredientsRecipe === payload.ingredientsRecipe &&
+          e.descsRecipe === payload.descsRecipe
+        ) {
           return true;
         }
       });
 
       if (isFound === false) {
-        state.recipe.push(payload);
+        if (isFound.id === payload.id) {
+          let index = state.recipe.indexOf(isFound);
+          state.recipe.splice(index, 1, payload);
+          console.log("yes");
+        }
+        if (isFound.id !== payload.id) {
+          console.log("no");
+          state.recipe.push(payload);
+        }
       }
 
       console.log(payload);
@@ -51,16 +67,41 @@ const store = createStore({
       state.imgPreview = payload;
       console.log(state.imgPreview);
     },
-    Edit(state, payload) {
+    view(state, payload) {
+      state.viewRecipe = payload;
+      console.log(state.viewRecipe);
+    },
+    edit(state, payload) {
       state.editRecipe = payload;
       console.log(state.editRecipe);
     },
     myOwn(state, payload) {
-      const recipe = payload;
-      recipe.forEach((element) => {
-        state.thisUserRecipe.push(element);
+      const MyRecipe = state.thisUserRecipe.some((e) => {
+        if (e.id === payload.id) {
+          return true;
+        }
       });
+      if (MyRecipe === false) {
+        state.thisUserRecipe.push(payload);
+      }
+
       console.log(state.thisUserRecipe);
+    },
+    titleCha(state, payload) {
+      state.editRecipe.title = payload;
+      console.log(state.editRecipe);
+    },
+    descCha(state, payload) {
+      state.editRecipe.descsRecipe = payload;
+    },
+    instrucCha(state, payload) {
+      state.editRecipe.instructionsRecipe = payload;
+    },
+    ingredCha(state, payload) {
+      state.editRecipe.ingredientsRecipe = payload;
+    },
+    imgCha(state, payload) {
+      state.editRecipe.img = payload;
     },
   },
   actions: {
@@ -74,14 +115,6 @@ const store = createStore({
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         context.commit("setUser", res.user);
-        /* 
-        const db = getDatabase();
-
-        set(ref(db, "user/" + auth.currentUser.uid), {
-          user: auth.currentUser.email,
-          recipe: [],
-          uuid: auth.currentUser.uid,
-        }); */
       } else {
         throw new Error("could not complete signup");
       }
@@ -105,15 +138,16 @@ const store = createStore({
 
     async getRecipe(context, data) {
       console.log("got recipe");
+
       context.commit("recipeRef", data);
     },
     async userRecipe(context, data) {
       console.log(data);
-      if (data.id === this.state.user.id) {
-        console.log();
+      if (data.email === this.state.user.email) {
+        console.log(data);
       }
       console.log("got this users recipe");
-      context.commit("myOwn");
+      context.commit("myOwn", data);
     },
   },
 });

@@ -6,7 +6,7 @@
       <p v-if="user !== null">Logged in as: {{ user.email }}</p>
     </div>
 
-    <div>
+    <div class="link">
       <router-link class="linked-route" to="/blog"> Recipe</router-link>
       <router-link class="linked-route" to="/"> Home </router-link>
       <router-link class="linked-route" to="/MyRecipe"> My Recipe </router-link>
@@ -34,7 +34,7 @@
 
 <script>
 import { useStore } from "vuex";
-import { computed /* ref */ } from "vue";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
@@ -61,6 +61,7 @@ nav {
   align-items: center;
   background-color: white;
   padding: 1rem;
+  flex-flow: row nowrap;
   border-bottom-right-radius: 2rem;
   border-bottom-left-radius: 2rem;
   border-bottom: solid;
@@ -80,15 +81,15 @@ nav a {
   color: #131313;
   text-decoration: none;
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 4rem;
+  font-size: 1.5vw;
 }
 
 nav span {
   color: gray;
 }
 .displayName {
-  margin-left: 15%;
-  margin-right: 5%;
+  width: 30%;
 }
 p {
   font-size: 2.5rem;

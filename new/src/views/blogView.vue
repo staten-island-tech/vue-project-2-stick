@@ -26,7 +26,7 @@ export default {
     let ingredients = data.ingredientsRecipe;
     let instruction = data.instructions.editRecipe;
     let title = data.title; */
-    return { data: computed(() => store.state.editRecipe) };
+    return { data: computed(() => store.state.viewRecipe) };
   },
 };
 </script>

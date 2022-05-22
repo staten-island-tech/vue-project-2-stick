@@ -6,6 +6,7 @@ import Create from "../views/Create.vue";
 import Blog from "../views/blog.vue";
 import BlogView from "../views/blogView.vue";
 import MyRecipe from "../views/MyRecipe.vue";
+import editView from "../views/editView.vue";
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: "/MyRecipe",
     name: "MyRecipe",
     component: MyRecipe,
+  },
+  {
+    path: "/editView",
+    name: "editView",
+    component: editView,
   },
 ];
 

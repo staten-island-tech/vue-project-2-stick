@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Card
+  <div class="container">
+    <EditCard
       v-for="food in recipe"
       :key="food"
       :id="food.id"
@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import Card from "../components/card.vue";
+import EditCard from "../components/editRecipe.vue";
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { getDatabase, ref, onValue } from "firebase/database";
 export default {
-  components: { Card },
+  components: { EditCard },
 
   setup() {
     const db = getDatabase();
@@ -38,5 +38,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
+.container {
+  display: flex;
+  flex-flow: row wrap;
+}
 </style>

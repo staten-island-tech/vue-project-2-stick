@@ -6,13 +6,18 @@
 </template>
 
 <script>
-import { ref /* watch */ } from "vue";
+import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 
 export default {
   setup() {
     const store = useStore();
     console.log(store);
+    onMounted(() => {
+      let prev = ref(store.state.editRecipe.img).value;
+      document.getElementById("img").src = prev;
+      document.getElementById("file").value = prev;
+    });
 
     function onFileChange() {
       let img = ref(document.getElementById("file")).value;
@@ -20,10 +25,7 @@ export default {
       console.log(link);
       if (link !== null) {
         document.getElementById("img").src = link;
-        store.commit("imgprv", link);
-      } else {
-        document.getElementById("img").src = null;
-        store.commit("imgprv", null);
+        store.commit("imgCha", link);
       }
     }
     return {
