@@ -13,7 +13,9 @@
     </div>
 
     <div>
-      <button class="logout" @click="handleClick">Logout</button>
+      <button class="logout" v-if="user !== null" @click="handleClick">
+        Logout
+      </button>
     </div>
     <div>
       <router-link v-if="user === null" class="linked-route" to="/login">
