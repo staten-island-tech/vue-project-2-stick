@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 //firebase import store
 import { auth } from "../firebase/config";
-
+import { getDatabase, set, ref } from "firebase/database";
 import {} from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
@@ -28,6 +28,14 @@ const store = createStore({
         } */
     setUser(state, payload) {
       state.user = payload;
+
+      const db = getDatabase();
+
+      set(ref(db, "user/" + state.user.uid), {
+        email: state.user.email,
+        uid: state.user.uid,
+        posts: [],
+      });
       console.log("user state changed:", state.user);
     },
     setAuthIsReady(state, payload) {

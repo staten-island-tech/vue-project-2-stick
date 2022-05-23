@@ -70,7 +70,9 @@ export default {
         desc !== null
       ) {
         const postlistRef = ref(db, "recipe/");
+        const userPost = ref(db, "user/" + auth.currentUser.uid + "/posts/");
         const newpostRef = push(postlistRef);
+        const putRef = push(userPost);
 
         set(newpostRef, {
           title: this.title,
@@ -87,6 +89,16 @@ export default {
           .catch((error) => {
             console.log(error);
           });
+
+        set(putRef, {
+          title: this.title,
+          ingredientsRecipe: this.ingred,
+          instructionsRecipe: this.instruc,
+          descsRecipe: this.desc,
+          id: newpostRef.key,
+          author: auth.currentUser.email,
+          img: store.state.imgPreview,
+        });
 
         route.push("/blog");
       }

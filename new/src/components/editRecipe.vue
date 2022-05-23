@@ -1,8 +1,10 @@
 <template>
   <div class="card">
     <h2 class="recipe-name">{{ title }}</h2>
+    <div class="img-cont">
+      <img class="recipe-img" :src="img" alt="" />
+    </div>
 
-    <img class="recipe-img" :src="img" alt="" />
     <p class="description">{{ text }}</p>
     <div class="btn-cont">
       <button class="btn" @click="goTo({ id })">Edit</button>
@@ -57,8 +59,8 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   background-color: gray;
-  width: 18%;
-  height: 32rem;
+  width: 20%;
+  height: 10%;
   border-radius: 2rem;
   margin: 0.9%;
   overflow: hidden;
@@ -67,9 +69,14 @@ export default {
   font-size: 5rem;
   margin: 0 auto;
 }
-.recipe-img {
+.img-cont {
   width: 80%;
-  height: auto;
+  height: 40%;
+  margin: 0 auto;
+}
+.recipe-img {
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
 }
 .description {
