@@ -24,18 +24,21 @@ export default {
     const db = getDatabase();
     const blogREf = ref(db, "recipe/");
     const store = useStore();
+    let list = [];
     onMounted(() => {
+      store.commit("clear");
       onValue(blogREf, (snapshot) => {
         snapshot.forEach(function (childSnapshot) {
           const childData = childSnapshot.exportVal();
+          list.push(childData);
           console.log(childData);
 
           store.dispatch("getRecipe", childData);
         });
       });
     });
-
-    return { recipe: computed(() => store.state.recipe), Card };
+    console.log(list);
+    return { recipe: computed(() => store.state.recipe), Card, list };
   },
 };
 </script>

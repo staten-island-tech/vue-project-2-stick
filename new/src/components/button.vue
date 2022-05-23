@@ -28,7 +28,7 @@ export default {
         img: store.state.editRecipe.img,
       });
 
-      router.push("/");
+      router.push("/MyRecipe");
     }
     return { change };
   },

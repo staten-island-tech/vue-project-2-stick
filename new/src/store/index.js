@@ -33,29 +33,34 @@ const store = createStore({
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
     },
+    clear(state) {
+      state.recipe = [];
+      state.editRecipe = [];
+    },
     recipeRef(state, payload) {
       let isFound = state.recipe.some((e) => {
         if (
-          e.id === payload.id &&
+          e.id === payload.id /* &&
           e.instructionsRecipe === payload.instructionsRecipe &&
           e.img === payload.img &&
           e.ingredientsRecipe === payload.ingredientsRecipe &&
-          e.descsRecipe === payload.descsRecipe
+          e.descsRecipe === payload.descsRecipe */
         ) {
           return true;
         }
       });
 
       if (isFound === false) {
-        if (isFound.id === payload.id) {
+        state.recipe.push(payload);
+        /* if (isFound.id === payload.id) {
           let index = state.recipe.indexOf(isFound);
           state.recipe.splice(index, 1, payload);
           console.log("yes");
         }
         if (isFound.id !== payload.id) {
           console.log("no");
-          state.recipe.push(payload);
-        }
+          
+        } */
       }
 
       console.log(payload);

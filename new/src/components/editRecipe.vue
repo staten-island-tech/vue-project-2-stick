@@ -4,14 +4,18 @@
 
     <img class="recipe-img" :src="img" alt="" />
     <p class="description">{{ text }}</p>
-    <button class="btn" @click="goTo({ id })">Edit</button>
+    <div class="btn-cont">
+      <button class="btn" @click="goTo({ id })">Edit</button>
+      <button class="btn" @click="clear({ id })">Delete</button>
+    </div>
   </div>
 </template>
 
 <script>
 import { useRouter } from "vue-router";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { useStore } from "vuex";
+
 export default {
   props: {
     title: String,
@@ -24,6 +28,7 @@ export default {
     const store = useStore();
     const db = getDatabase();
     const router = useRouter();
+
     function goTo(id) {
       console.log("working");
       let idRef = id.id;
@@ -34,7 +39,14 @@ export default {
       });
       router.push("/editView");
     }
-    return { goTo };
+    function clear(id) {
+      console.log("working");
+      let idRef = id.id;
+      const blog = ref(db, "recipe/" + idRef);
+      remove(blog);
+      location.reload();
+    }
+    return { goTo, clear };
   },
 };
 </script>
@@ -76,5 +88,9 @@ export default {
   width: 50%;
   height: 15%;
   margin: 0 auto;
+}
+.btn-cont {
+  display: flex;
+  flex-flow: row nowrap;
 }
 </style>
