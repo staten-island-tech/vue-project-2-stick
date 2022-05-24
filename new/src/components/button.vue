@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="btn-cont">
     <button class="btn" @click.prevent="change">Complele</button>
   </div>
 </template>
@@ -36,8 +36,8 @@ export default {
 </script>
 
 <style  scoped>
-.btn {
-  margin-top: 1%;
-  margin-left: 90%;
+.btn-cont {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

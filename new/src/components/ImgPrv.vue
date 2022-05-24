@@ -1,6 +1,7 @@
 <template>
   <div>
-    <input id="file" type="text" v-on:change="onFileChange" />
+    <label for="input">Insert Image Link</label>
+    <input id="file" name="input" type="text" v-on:change="onFileChange" />
     <img class="imagePreviewWrapper" id="img" src="" alt="" />
   </div>
 </template>
@@ -34,9 +35,6 @@ export default {
 </script>
 
 <style  scoped>
-input {
-  margin-top: 2%;
-}
 .imagePreviewWrapper {
   width: 250px;
   height: 250px;

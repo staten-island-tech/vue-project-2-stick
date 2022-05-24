@@ -36,8 +36,9 @@
     </form>
 
     <Img />
-
-    <button class="btn" @click.prevent="writeUserData">Complele</button>
+    <div class="btn-cont">
+      <button class="btn" @click.prevent="writeUserData">Complele</button>
+    </div>
   </div>
 </template>
 
@@ -45,7 +46,7 @@
 import { getDatabase, set, ref, push } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "vue-router";
-import Img from "../components/new.vue";
+import Img from "../components/ImgPrv.vue";
 
 import { useStore } from "vuex";
 export default {
@@ -125,8 +126,8 @@ textarea {
   font-size: 2rem;
 }
 
-.btn {
-  margin-top: 1%;
-  margin-left: 90%;
+.btn-cont {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

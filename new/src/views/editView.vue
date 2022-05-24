@@ -1,5 +1,5 @@
 <template>
-  <div><Form /></div>
+  <div class="edit-blog-cont"><Form /></div>
 </template>
 
 <script>
@@ -15,4 +15,9 @@ export default {
 </script>
 
 <style scoped>
+.edit-blog-cont {
+  background-color: rgb(200, 200, 223);
+  width: 100vw;
+  height: 100vh;
+}
 </style>

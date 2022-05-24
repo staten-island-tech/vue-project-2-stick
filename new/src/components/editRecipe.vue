@@ -59,27 +59,34 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   background-color: gray;
-  width: 20%;
-  height: 10%;
+  width: 22rem;
+  width: 20vw;
+  height: 33rem;
+  height: 31vh;
   border-radius: 2rem;
   margin: 0.9%;
-  overflow: hidden;
 }
 .recipe-name {
   font-size: 5rem;
   margin: 0 auto;
+  font-size: 2rem;
+  font-size: 2vw;
 }
 .img-cont {
-  width: 80%;
-  height: 40%;
+  width: 20rem;
+  width: 18vw;
+  height: 20rem;
+  height: 18vh;
   margin: 0 auto;
 }
 .recipe-img {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  object-fit: cover;
 }
 .description {
+  position: relative;
   background-color: rgb(228, 163, 163);
   border-radius: 2rem;
   width: 95%;
@@ -89,15 +96,20 @@ export default {
   margin-top: 2%;
   margin-bottom: 2%;
   font-size: 2rem;
+  font-size: 2vw;
 }
 
 .btn {
   width: 50%;
-  height: 15%;
+  height: 100%;
+
   margin: 0 auto;
 }
 .btn-cont {
   display: flex;
   flex-flow: row nowrap;
+  width: 100%;
+
+  margin: 0 auto;
 }
 </style>

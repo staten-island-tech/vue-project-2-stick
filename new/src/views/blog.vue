@@ -7,6 +7,7 @@
       :title="food.title"
       :img="food.img"
       :text="food.descsRecipe"
+      :creator="food.author"
     />
   </div>
 </template>

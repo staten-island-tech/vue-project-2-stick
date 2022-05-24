@@ -1,11 +1,15 @@
 <template>
   <button class="card" @click="goTo({ id })">
     <h2 class="recipe-name">{{ title }}</h2>
-
-    <img class="recipe-img" :src="img" alt="" />
-    <p class="description">{{ text }}</p>
-    <!-- <p class="ingredient">{{ item }}</p>
-    <p class="instruction">{{ text }}</p> -->
+    <div class="img-cont">
+      <img class="recipe-img" :src="img" alt="" />
+    </div>
+    <div class="desc-cont">
+      <p class="description">{{ text }}</p>
+    </div>
+    <div class="author">
+      <h2 class="card-by">By: {{ creator }}</h2>
+    </div>
   </button>
 </template>
 
@@ -20,6 +24,7 @@ export default {
     img: String,
     description: String,
     id: String,
+    creator: String,
   },
   setup() {
     const store = useStore();
@@ -46,23 +51,48 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   background-color: gray;
-  width: 18%;
-  height: 32rem;
+  width: 20vw;
+  height: 31vh;
   border-radius: 2rem;
   margin: 0.9%;
-  overflow: hidden;
 }
 .recipe-name {
-  font-size: 5rem;
+  font-size: 2rem;
+  font-size: 2vw;
+  margin: 0 auto;
+}
+.img-cont {
+  width: 90%;
+  height: 40%;
   margin: 0 auto;
 }
 .recipe-img {
-  width: 80%;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
   margin: 0 auto;
+}
+.desc-cont {
+  width: 90%;
+  height: 40%;
+  margin: 0 auto;
+  margin-top: 3%;
+  background-color: rgb(170, 219, 219);
+  border-radius: 2rem;
+  padding: 1rem;
+  overflow: hidden;
 }
 .description {
   margin: 0 auto;
   font-size: 2rem;
+}
+.author {
+  margin: 0 auto;
+  padding: 2%;
+}
+.card-by {
+  font-size: 1rem;
+  font-size: 1vw;
 }
 </style>
