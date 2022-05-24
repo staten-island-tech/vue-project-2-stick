@@ -7,8 +7,13 @@
 
     <p class="description">{{ text }}</p>
     <div class="btn-cont">
-      <button class="btn" @click="goTo({ id })">Edit</button>
-      <button class="btn" @click="clear({ id })">Delete</button>
+      <div class="btn-cont2">
+        <button class="btn" @click="goTo({ id })">Edit</button>
+      </div>
+
+      <div class="btn-cont2">
+        <button class="btn" @click="clear({ id })">Delete</button>
+      </div>
     </div>
   </div>
 </template>
@@ -55,28 +60,27 @@ export default {
 
 <style scoped>
 .card {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
   background-color: gray;
-  width: 22rem;
   width: 20vw;
-  height: 33rem;
-  height: 31vh;
+  max-width: 40rem;
+  height: 40vh;
+  max-height: 40rem;
+  padding: 1%;
   border-radius: 2rem;
   margin: 0.9%;
 }
 .recipe-name {
-  font-size: 5rem;
   margin: 0 auto;
   font-size: 2rem;
   font-size: 2vw;
 }
 .img-cont {
-  width: 20rem;
-  width: 18vw;
-  height: 20rem;
-  height: 18vh;
+  width: 90%;
+  height: 50%;
   margin: 0 auto;
 }
 .recipe-img {
@@ -86,7 +90,6 @@ export default {
   object-fit: cover;
 }
 .description {
-  position: relative;
   background-color: rgb(228, 163, 163);
   border-radius: 2rem;
   width: 95%;
@@ -100,16 +103,37 @@ export default {
 }
 
 .btn {
-  width: 50%;
+  width: 100%;
   height: 100%;
 
   margin: 0 auto;
 }
 .btn-cont {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   width: 100%;
-
+  height: auto;
   margin: 0 auto;
 }
+.btn-cont2 {
+  width: 50%;
+}
+
+@media (max-width: 125rem) {
+  .card {
+    width: 30rem;
+    height: 28rem;
+  }
+}
+
+@media (max-width: 96rem) {
+  .recipe-name {
+    font-size: 3rem;
+    font-size: 3vw;
+  }
+  .description {
+    font-size: 3rem;
+    font-size: 2.5vw;
+  }
+} ;
 </style>

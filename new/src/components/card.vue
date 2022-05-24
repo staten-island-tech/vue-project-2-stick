@@ -52,7 +52,7 @@ export default {
   flex-flow: column nowrap;
   background-color: gray;
   width: 20vw;
-  height: 31vh;
+  height: 40vh;
   border-radius: 2rem;
   margin: 0.9%;
 }
