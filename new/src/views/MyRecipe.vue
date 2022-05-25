@@ -45,4 +45,10 @@ export default {
   display: flex;
   flex-flow: row wrap;
 }
+
+@media screen and (max-width: 66rem) {
+  .container {
+    justify-content: center;
+  }
+}
 </style>

@@ -65,10 +65,8 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   background-color: gray;
-  width: 20vw;
-  max-width: 40rem;
-  height: 40vh;
-  max-height: 40rem;
+  width: 20%;
+  height: 35rem;
   padding: 1%;
   border-radius: 2rem;
   margin: 0.9%;
@@ -93,13 +91,14 @@ export default {
   background-color: rgb(228, 163, 163);
   border-radius: 2rem;
   width: 95%;
+  height: 20%;
   padding: 2%;
   text-align: center;
   margin: 0 auto;
   margin-top: 2%;
   margin-bottom: 2%;
   font-size: 2rem;
-  font-size: 2vw;
+  overflow: hidden;
 }
 
 .btn {
@@ -119,21 +118,36 @@ export default {
   width: 50%;
 }
 
-@media (max-width: 125rem) {
+@media screen and (max-width: 124rem) {
   .card {
-    width: 30rem;
-    height: 28rem;
+    width: 20%;
   }
 }
 
-@media (max-width: 96rem) {
+@media screen and (max-width: 88rem) {
+  .card {
+    width: 30%;
+    height: 32rem;
+  }
+}
+
+@media screen and (max-width: 66rem) {
+  .card {
+    width: 40%;
+  }
   .recipe-name {
-    font-size: 3rem;
-    font-size: 3vw;
+    font-size: 4rem;
+    font-size: 4vw;
   }
-  .description {
-    font-size: 3rem;
-    font-size: 2.5vw;
+}
+
+@media screen and (max-width: 50rem) {
+  .card {
+    width: 60%;
   }
-} ;
+  .recipe-name {
+    font-size: 5rem;
+    font-size: 6vw;
+  }
+}
 </style>
