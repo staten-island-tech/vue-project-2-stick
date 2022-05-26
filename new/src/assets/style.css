@@ -1,0 +1,93 @@
+html,
+body,
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+:root {
+  /* Define Colors as colors */
+  --black: #131313;
+  --light-black: #232323;
+
+  --white: #fff;
+  --off-white: #f0f1f6;
+  --dark-grey: #1a2f41;
+  --grey: #252c30;
+  --lightGrey: #f2f4f6;
+  /* Define Colors intentions */
+  --background-primary: var(--light-black);
+  --skill-background: var(--black);
+  --card-background: var(--light-black);
+  --card-text: var(--white);
+  --background-secondary: var(--dark-grey);
+  --text-primary: var(--white);
+  --text-secondary: var(--black);
+  --modal-background: var(--black);
+  --modal-text: var(--white);
+  --student-text: var(--white);
+  --link-text: var(--white);
+  --nav-line: var(--white);
+  --header-btn: var(--white);
+  --footer-icon: var(--light-black);
+  /* Styles */
+
+  /* Type */
+
+  --h1: 7.594rem;
+  --h2: 5.063rem;
+  --h3: 3.375rem;
+  --h4: 2.25rem;
+  --h5: 1.5rem;
+  --smallText: 0.8rem;
+
+  /* Elevation */
+}
+h1 {
+  font-size: var(--h3);
+}
+h3 {
+  font-size: var(--h3);
+}
+
+button {
+  background: #00dba4;
+  border: 0;
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.login {
+  border: solid;
+  border-color: black;
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  margin-top: 10rem;
+  width: 60%;
+  padding: 13rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  font-size: 3rem;
+}
+
+input {
+  font-size: 2rem;
+  width: 100%;
+  border-radius: 2rem;
+  padding: 1%;
+}
