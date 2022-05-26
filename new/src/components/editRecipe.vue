@@ -5,7 +5,7 @@
       <img class="recipe-img" :src="img" alt="" />
     </div>
 
-    <p class="description">{{ text }}</p>
+    <p class="description">{{ description }}</p>
     <div class="btn-cont">
       <div class="btn-cont2">
         <button class="btn" @click="goTo({ id })">Edit</button>
@@ -44,6 +44,7 @@ export default {
         const data = snapshot.val();
         store.commit("edit", data);
       });
+     
       router.push("/editView");
     }
     function clear(id) {

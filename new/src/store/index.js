@@ -43,7 +43,7 @@ const store = createStore({
     },
     clear(state) {
       state.recipe = [];
-      state.editRecipe = [];
+      state.thisUserRecipe = [];
     },
     recipeRef(state, payload) {
       let isFound = state.recipe.some((e) => {

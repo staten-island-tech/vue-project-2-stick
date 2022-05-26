@@ -6,7 +6,7 @@
       :id="food.id"
       :title="food.title"
       :img="food.img"
-      :text="food.descsRecipe"
+      :description="food.descsRecipe"
     />
   </div>
 </template>

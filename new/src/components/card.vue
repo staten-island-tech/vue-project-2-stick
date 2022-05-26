@@ -95,4 +95,37 @@ export default {
   font-size: 1rem;
   font-size: 1vw;
 }
+
+@media screen and (max-width: 124rem) {
+  .card {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 88rem) {
+  .card {
+    width: 30%;
+    height: 32rem;
+  }
+}
+
+@media screen and (max-width: 66rem) {
+  .card {
+    width: 40%;
+  }
+  .recipe-name {
+    font-size: 4rem;
+    font-size: 4vw;
+  }
+}
+
+@media screen and (max-width: 50rem) {
+  .card {
+    width: 60%;
+  }
+  .recipe-name {
+    font-size: 5rem;
+    font-size: 6vw;
+  }
+}
 </style>

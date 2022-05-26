@@ -27,7 +27,7 @@ export default {
         author: store.state.editRecipe.author,
         img: store.state.editRecipe.img,
       });
-
+      store.commit("clear");
       router.push("/MyRecipe");
     }
     return { change };
