@@ -157,10 +157,10 @@ const store = createStore({
     async userRecipe(context, data) {
       console.log(data);
       if (data.email === this.state.user.email) {
+        context.commit("myOwn", data);
         console.log(data);
       }
       console.log("got this users recipe");
-      context.commit("myOwn", data);
     },
   },
 });
