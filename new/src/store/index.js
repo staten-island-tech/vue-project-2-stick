@@ -99,6 +99,7 @@ const store = createStore({
       }
 
       console.log(state.thisUserRecipe);
+      console.log("myrecipe");
     },
     titleCha(state, payload) {
       state.editRecipe.title = payload;
@@ -156,10 +157,11 @@ const store = createStore({
     },
     async userRecipe(context, data) {
       console.log(data);
-      if (data.email === this.state.user.email) {
-        context.commit("myOwn", data);
+      if (data.author === this.state.user.email) {
         console.log(data);
+        context.commit("myOwn", data);
       }
+
       console.log("got this users recipe");
     },
   },
