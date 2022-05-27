@@ -44,7 +44,7 @@ export default {
         const data = snapshot.val();
         store.commit("edit", data);
       });
-     
+
       router.push("/editView");
     }
     function clear(id) {
