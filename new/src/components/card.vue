@@ -40,6 +40,7 @@ export default {
       });
       router.push("/BlogView");
     }
+
     return { goTo };
   },
 };
