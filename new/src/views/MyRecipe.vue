@@ -23,7 +23,6 @@ export default {
     const db = getDatabase();
     const blogREf = ref(db, "recipe/");
     const store = useStore();
-    location.reload();
     onMounted(() => {
       store.commit("clear");
       onValue(blogREf, (snapshot) => {
