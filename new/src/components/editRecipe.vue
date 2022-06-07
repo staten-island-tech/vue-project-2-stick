@@ -48,12 +48,19 @@ export default {
       router.push("/editView");
     }
     function clear(id) {
-      router.push("/MyRecipe");
       console.log("working");
       let idRef = id.id;
       const blog = ref(db, "recipe/" + idRef);
-
       remove(blog);
+      store.commit("clear");
+      onValue(blogREf, (snapshot) => {
+        snapshot.forEach(function (childSnapshot) {
+          const childData = childSnapshot.exportVal();
+          console.log(childData);
+
+          store.dispatch("userRecipe", childData);
+        });
+      });
     }
     return { goTo, clear };
   },
