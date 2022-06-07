@@ -48,11 +48,12 @@ export default {
       router.push("/editView");
     }
     function clear(id) {
+      router.push("/MyRecipe");
       console.log("working");
       let idRef = id.id;
       const blog = ref(db, "recipe/" + idRef);
+
       remove(blog);
-      location.reload();
     }
     return { goTo, clear };
   },
