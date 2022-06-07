@@ -52,6 +52,7 @@ export default {
       let idRef = id.id;
       const blog = ref(db, "recipe/" + idRef);
       remove(blog);
+      const blogREf = ref(db, "recipe/");
       store.commit("clear");
       onValue(blogREf, (snapshot) => {
         snapshot.forEach(function (childSnapshot) {
